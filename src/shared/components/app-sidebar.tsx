@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import { Home, Inbox, Settings } from "lucide-react"
 
 import {
@@ -10,7 +11,6 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { NavLink } from "react-router-dom"
 
 // Menu items.
 const items = [
