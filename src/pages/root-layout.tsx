@@ -7,10 +7,10 @@ export default function Rootlayout({ }) {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main>
-                <SidebarTrigger />
+            <main className="w-[100%] px-2 md:px-5">
+            <SidebarTrigger />
                 <div>
-                    <Outlet/>
+                    <Outlet />
                 </div>
             </main>
         </SidebarProvider>
