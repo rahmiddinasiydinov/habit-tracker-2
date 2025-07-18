@@ -1,9 +1,10 @@
-
+import Rootlayout from "./pages/root-layout"
 
 function App() {
 
   return (
     <>
+      <Rootlayout />
     </>
   )
 }
