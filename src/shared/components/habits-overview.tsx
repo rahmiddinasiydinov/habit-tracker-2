@@ -1,4 +1,3 @@
-import React from 'react'
 import HabitsList from './habits-list'
 
 type Props = {}
