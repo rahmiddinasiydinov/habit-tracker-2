@@ -1,7 +1,8 @@
-import type { InputError } from "../components/form";
+import type { InputError } from "../hooks/useHabitValidation";
+
+;
 
 export const validateInputFields = (identifier: string, value: string | undefined, minLength: number): InputError => {
-    console.log(value, minLength);
     
     if (value === undefined || value.length < minLength) {
         return {
