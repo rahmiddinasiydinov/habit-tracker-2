@@ -21,17 +21,17 @@ export default function SingleHabit({ habit }: Props) {
     const isHabitCustom = habit.type === 'custom';
 
     return (
-        <Card className={`${!isHabitCustom ? 'opacity-70' : ''}`}>
+        <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>
             <CardHeader>
                 <CardTitle className="md:text-2xl flex items-center">
                     {habit.name}
-                    <Badge variant={"secondary"} className="ml-2 md:ml-5">{habit.type}</Badge>
+                    <Badge variant={isHabitCustom ? "default" : "secondary"} className="ml-2 md:ml-5">{habit.type}</Badge>
                 </CardTitle>
                 <CardDescription></CardDescription>
                 {
                     isHabitCustom && <CardAction>
-                        <Button>Edit</Button>
-                        <Button variant={"destructive"}>Delete</Button>
+                        <Button className="mr-4 cursor-pointer">Edit</Button>
+                        <Button variant={"destructive"} className="cursor-pointer">Delete</Button>
                     </CardAction>
                 }
 

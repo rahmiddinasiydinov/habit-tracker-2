@@ -7,7 +7,7 @@ export type Habit = {
     description: string;
     type: 'predefined' | 'custom';
     createdAt: string;  // ISO 8601
-    updatedAt: string;  // ISO 8601
+    updatedAt?: string;  // ISO 8601
 };
 
 export type HabitSliceValue = {
@@ -18,6 +18,10 @@ export type HabitStateValue = {
     habits: HabitSliceValue
 }
 
+type HabitAddActionType = {
+    type: string,
+    payload: Habit
+}
 
 const initialState: HabitSliceValue = {
     habits: PREDEFINED_HABITS
@@ -27,8 +31,8 @@ const habitSlice = createSlice({
     name: 'habits',
     initialState,
     reducers: {
-        addHabit(state, action) {
-            state.habits.push(action.payload)
+        addHabit(state, action: HabitAddActionType) {
+            state.habits.unshift(action.payload)
         }
     }
 })
