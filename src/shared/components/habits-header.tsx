@@ -1,5 +1,4 @@
 import AddHabit from './add-habit'
-import ManipulatedHabitForm from './manipulated-habit-form'
 import PageHeading from './page-heading'
 import { SortDropdown } from './sort-dropdown'
 
