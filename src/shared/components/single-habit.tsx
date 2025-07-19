@@ -28,12 +28,16 @@ export default function SingleHabit({ habit }: Props) {
         dispatch(habitActions.setCurrentChosenHabit(habit))
     }
 
+    const handleDelete = () => {
+        dispatch(habitActions.deleteHabit(habit.id))
+    }
+
     return (
         <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>
             <CardHeader className="relative">
                 <CardTitle className="md:text-2xl flex items-center">
                     {habit.name}
-                    <SingleHabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type}/>
+                    <SingleHabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type} />
                 </CardTitle>
                 <div className={`absolute right-7 -top-3 md:top-0 ${!isHabitCustom ? 'hidden' : ''}`}>
                     <CircleCheck className=" w-[50px] h-[50px] text-green-500" />
@@ -50,8 +54,12 @@ export default function SingleHabit({ habit }: Props) {
                 <p className="text-start">{dateFormatter(habit.createdAt)}</p>
                 {
                     isHabitCustom && <CardAction>
-                        <Button className="mr-4 cursor-pointer" onClick={handleEdit}><EditHabit /></Button>
-                        <Button variant={"destructive"} className="cursor-pointer">Delete</Button>
+                        <Button className="mr-4 cursor-pointer" onClick={handleEdit}>
+                            <EditHabit />
+                        </Button>
+                        <Button variant={"destructive"} className="cursor-pointer" onClick={handleDelete}>
+                            Delete
+                        </Button>
                     </CardAction>
                 }
             </CardFooter>

@@ -40,6 +40,10 @@ type CurrentChosenHabitAction = {
     payload: Habit
 }
 
+type DeleteHabitAction = {
+    type: string,
+    payload: string
+}
 
 const initialState: HabitSliceValue = {
     habits: PREDEFINED_HABITS,
@@ -52,7 +56,7 @@ const habitSlice = createSlice({
     reducers: {
         addHabit(state, action: AddHabitAction) {
             state.habits.unshift(action.payload)
-            toast("New habit is Created!");
+            toast("New habit has been created!");
         },
 
         editHabit(state, action: EditHabitAction) {
@@ -61,8 +65,7 @@ const habitSlice = createSlice({
             const description = action.payload.description
 
             if (id && name && description) {
-                const habitId = action.payload.id;
-                const currentHabitIndex = state.habits.findIndex(habit => habit.id === habitId);
+                const currentHabitIndex = state.habits.findIndex(habit => habit.id === id);
 
                 const updatedHabit: Habit = {
                     ...state.habits[currentHabitIndex],
@@ -72,10 +75,20 @@ const habitSlice = createSlice({
                 }
 
                 state.habits.splice(currentHabitIndex, 1, updatedHabit);
+                toast("Habit has been updated!");
             }
 
             state.currentChosenHabit = null;
-            toast("Habit is updated successfully!");
+        },
+
+        deleteHabit(state, action: DeleteHabitAction) {
+            const id = action.payload;
+
+            if (id) {
+                const currentHabitIndex = state.habits.findIndex(habit => habit.id === id);
+                state.habits.splice(currentHabitIndex, 1);
+                toast('Habit has been deleted!');
+            }
         },
 
         setCurrentChosenHabit(state, action: CurrentChosenHabitAction) {
