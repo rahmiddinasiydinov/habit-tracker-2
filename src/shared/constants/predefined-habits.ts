@@ -2,6 +2,14 @@ import type { Habit } from "@/store/habit-slice";
 
 export const PREDEFINED_HABITS: Habit[] = [
   {
+    id: '0',
+    name: 'Swimming',
+    description: 'Every other two day I go to swimming ',
+    type: 'custom',
+    createdAt: '2025-07-19T10:00:00.000+08:00',
+    updatedAt: '',
+  },
+  {
     id: '1',
     name: 'Morning Exercise',
     description: 'Do 15 minutes of stretching and cardio.',
