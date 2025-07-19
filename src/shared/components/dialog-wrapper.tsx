@@ -7,18 +7,22 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { Button} from '@/components/ui/button'
 
 type Props = {
     children: React.ReactNode,
     buttonText: string,
     title: string
+    buttonVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined
 }
 
-export default function DialogWrapper({children, buttonText, title}: Props) {
+export default function DialogWrapper({children, buttonText, buttonVariant,  title}: Props) {
     
     return (
         <Dialog>
-            <DialogTrigger>{buttonText}</DialogTrigger>
+            <DialogTrigger asChild>
+                <Button variant={buttonVariant}>{buttonText}</Button>
+            </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>

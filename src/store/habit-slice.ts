@@ -1,5 +1,6 @@
 import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "sonner";
 
 export type Habit = {
     id: string;
@@ -8,31 +9,77 @@ export type Habit = {
     type: 'predefined' | 'custom';
     createdAt: string;  // ISO 8601
     updatedAt?: string;  // ISO 8601
+    isNew?: boolean
 };
 
 export type HabitSliceValue = {
-    habits: Habit[]
+    habits: Habit[],
+    currentChosenHabit: Habit | null
 }
 
 export type HabitStateValue = {
     habits: HabitSliceValue
 }
 
-type HabitAddActionType = {
+type AddHabitAction = {
     type: string,
     payload: Habit
 }
 
+type EditHabitAction = {
+    type: string,
+    payload: {
+        id: string,
+        name?: string,
+        description?: string
+    }
+}
+
+type CurrentChosenHabitAction = {
+    type: string,
+    payload: Habit
+}
+
+
 const initialState: HabitSliceValue = {
-    habits: PREDEFINED_HABITS
+    habits: PREDEFINED_HABITS,
+    currentChosenHabit: null
 };
 
 const habitSlice = createSlice({
     name: 'habits',
     initialState,
     reducers: {
-        addHabit(state, action: HabitAddActionType) {
+        addHabit(state, action: AddHabitAction) {
             state.habits.unshift(action.payload)
+            toast("New habit is Created!");
+        },
+
+        editHabit(state, action: EditHabitAction) {
+            const id = action.payload.id
+            const name = action.payload.name
+            const description = action.payload.description
+
+            if (id && name && description) {
+                const habitId = action.payload.id;
+                const currentHabitIndex = state.habits.findIndex(habit => habit.id === habitId);
+
+                const updatedHabit: Habit = {
+                    ...state.habits[currentHabitIndex],
+                    name,
+                    description,
+                    isNew: false
+                }
+
+                state.habits.splice(currentHabitIndex, 1, updatedHabit);
+            }
+
+            state.currentChosenHabit = null;
+            toast("Habit is updated successfully!");
+        },
+
+        setCurrentChosenHabit(state, action: CurrentChosenHabitAction) {
+            state.currentChosenHabit = action.payload
         }
     }
 })

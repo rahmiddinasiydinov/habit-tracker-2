@@ -16,7 +16,9 @@ export function InputWithLabel({ id, placeholder, label, textarea, ref, ...props
   return (
     <div className="grid w-full max-w-sm items-center gap-3">
       <Label htmlFor={id}>{label}</Label>
-      {textarea ? <Textarea ref={ref as Ref<HTMLTextAreaElement>} id={id} placeholder={placeholder} {...props} /> : <Input ref={ref as Ref<HTMLInputElement>} type={id} id={id} placeholder={placeholder} {...props} />}
+      {textarea
+        ? <Textarea ref={ref as Ref<HTMLTextAreaElement>} id={id} placeholder={placeholder} {...props} />
+        : <Input ref={ref as Ref<HTMLInputElement>} type={id} id={id} placeholder={placeholder} {...props} />}
 
     </div>
   )
