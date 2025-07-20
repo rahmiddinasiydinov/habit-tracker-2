@@ -22,7 +22,7 @@ type Props = {
     habit: Habit
 }
 
-export default function SingleHabit({ habit }: Props) {
+export default function SingleHabitCard({ habit }: Props) {
     const dispatch = useDispatch()
     const isHabitCustom = habit.type === 'custom';
 
@@ -41,15 +41,15 @@ export default function SingleHabit({ habit }: Props) {
                     {habit.name}
                     <SingleHabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type} />
                 </CardTitle>
-                <div className={`absolute right-7 top-12 md:-top-3 ${!isHabitCustom ? 'hidden' : ''}`}>
-                    <CircleCheck className=" w-[50px] h-[50px] text-green-500" />
+                <div className={`absolute right-7  md:-top-3 ${!isHabitCustom ? 'hidden' : ''}`}>
+                    <CircleCheck className="w-[25px] h-[25px] md:w-[50px] md:h-[50px] text-green-500" />
                     {/* <CircleXIcon className=" w-[50px] h-[50px] text-destructive" /> */}
                 </div>
 
             </CardHeader>
             <CardContent>
-                <p>
-
+                <p className="w-[90%]  max-h-[50px]">
+                    {habit.description.slice(0, 50)}{habit.description.length > 50 ? "..." : ''}
                 </p>
             </CardContent>
             <CardFooter className="flex gap-3 flex-col md:flex-row md:justify-between  items-start">
