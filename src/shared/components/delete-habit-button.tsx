@@ -1,4 +1,3 @@
-import React from 'react'
 import DialogWrapper from './dialog-wrapper'
 import { DialogClose } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
