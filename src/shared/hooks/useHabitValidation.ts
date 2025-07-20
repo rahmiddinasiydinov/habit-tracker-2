@@ -12,21 +12,24 @@ export type InputError = {
 export default function useHabitValidation() {
     const [formErrors, setFormErrors] = useState<InputError[]>([]);
 
-
-
     const validateHabitInputs = (nameValue: NameValue, descriptionValue: DescriptionValue) => {
         const errors: InputError[] = []
 
         const nameError = validateInputFields("Name", nameValue, 1);
         const descriptionError = validateInputFields("Description", descriptionValue, 5);
-       
+
         if (nameError) {
             errors.push(nameError)
         }
         if (descriptionError) {
             errors.push(descriptionError);
         }
+
         setFormErrors(errors)
+        
+        const AreValuesValid = errors.length === 0;
+        
+        return AreValuesValid;
     }
 
 
