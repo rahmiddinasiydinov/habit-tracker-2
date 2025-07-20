@@ -56,7 +56,7 @@ const habitSlice = createSlice({
     reducers: {
         addHabit(state, action: AddHabitAction) {
             state.habits.unshift(action.payload)
-            toast("New habit has been created!");
+            toast.success("New habit has been created!");
         },
 
         editHabit(state, action: EditHabitAction) {
@@ -75,7 +75,7 @@ const habitSlice = createSlice({
                 }
 
                 state.habits.splice(currentHabitIndex, 1, updatedHabit);
-                toast("Habit has been updated!");
+                toast.success("Habit has been updated!");
             }
 
             state.currentChosenHabit = null;
@@ -87,7 +87,7 @@ const habitSlice = createSlice({
             if (id) {
                 const currentHabitIndex = state.habits.findIndex(habit => habit.id === id);
                 state.habits.splice(currentHabitIndex, 1);
-                toast('Habit has been deleted!');
+                toast.success('Habit has been deleted!');
             }
         },
 

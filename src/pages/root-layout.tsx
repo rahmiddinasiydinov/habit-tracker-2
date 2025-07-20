@@ -14,7 +14,7 @@ export default function Rootlayout({ }) {
                     <Outlet />
                 </div>
             </main>
-            <Toaster/>
+            <Toaster position="top-center" expand={false} richColors/>
         </SidebarProvider>
     )
 }

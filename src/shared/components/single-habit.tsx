@@ -15,6 +15,8 @@ import { habitActions, type Habit } from '@/store/habit-slice'
 import dateFormatter from "../utils/dateFormatter"
 import EditHabit from "./edit-habit"
 import SingleHabitBadges from "./single-habit-badges"
+import DialogWrapper from "./dialog-wrapper"
+import { DialogClose } from "@/components/ui/dialog"
 
 type Props = {
     habit: Habit
@@ -29,7 +31,7 @@ export default function SingleHabit({ habit }: Props) {
     }
 
     const handleDelete = () => {
-        dispatch(habitActions.deleteHabit(habit.id))
+        dispatch(habitActions.deleteHabit(habit.id));
     }
 
     return (
@@ -57,9 +59,26 @@ export default function SingleHabit({ habit }: Props) {
                         <Button className="mr-4 cursor-pointer" onClick={handleEdit}>
                             <EditHabit />
                         </Button>
-                        <Button variant={"destructive"} className="cursor-pointer" onClick={handleDelete}>
-                            Delete
-                        </Button>
+
+                        <DialogWrapper
+                            buttonText="Delete"
+                            title="Are your sure to delete the habit?"
+                            buttonVariant={"destructive"}
+                        >
+                            <DialogClose asChild className="mr-4">
+                                <Button variant={'default'}>
+                                    Cancel
+                                </Button>
+                            </DialogClose>
+
+                            <DialogClose>
+                                <Button variant={'outline'} onClick={handleDelete}>
+                                    Yes
+                                </Button>
+                            </DialogClose>
+
+                        </DialogWrapper>
+
                     </CardAction>
                 }
             </CardFooter>

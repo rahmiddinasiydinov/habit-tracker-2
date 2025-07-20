@@ -13,13 +13,14 @@ type Props = {
     children: React.ReactNode,
     buttonText: string,
     title: string
-    buttonVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined
+    buttonVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined,
+    isOpen?: boolean
 }
 
-export default function DialogWrapper({children, buttonText, buttonVariant,  title}: Props) {
+export default function DialogWrapper({children, buttonText, buttonVariant,  title, isOpen}: Props) {
     
     return (
-        <Dialog>
+        <Dialog modal={isOpen}>
             <DialogTrigger asChild>
                 <Button variant={buttonVariant}>{buttonText}</Button>
             </DialogTrigger>
