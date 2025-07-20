@@ -64,18 +64,29 @@ const habitSlice = createSlice({
             const name = action.payload.name
             const description = action.payload.description
 
+            let isEdited = false;
+
             if (id && name && description) {
                 const currentHabitIndex = state.habits.findIndex(habit => habit.id === id);
+                const currentHabit = state.habits[currentHabitIndex];
 
-                const updatedHabit: Habit = {
-                    ...state.habits[currentHabitIndex],
-                    name,
-                    description,
-                    isNew: false
+                isEdited = name !== currentHabit.name || description !== currentHabit.description;
+
+                
+
+                if (isEdited) {
+                    const updatedHabit: Habit = {
+                        ...state.habits[currentHabitIndex],
+                        name,
+                        description,
+                        isNew: false
+                    }
+                    state.habits.splice(currentHabitIndex, 1, updatedHabit);
+                    toast.success("Habit has been updated!");
+                } else {
+                    toast.warning("You have not updated the habit!");
                 }
 
-                state.habits.splice(currentHabitIndex, 1, updatedHabit);
-                toast.success("Habit has been updated!");
             }
 
             state.currentChosenHabit = null;

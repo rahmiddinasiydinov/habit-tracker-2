@@ -1,19 +1,23 @@
 import { useEffect, useRef, type FormEvent } from 'react'
+
 import useHabitValidation from './useHabitValidation';
 import useHabitUpdate, { type HabitSubmission } from './useUpadeHabits';
-import { useSelector } from 'react-redux';
-import type { HabitStateValue } from '@/store/habit-slice';
+import useHabitsState from './useHabitsState';
 
 export const useHabitSubmittion = (type: HabitSubmission) => {
-    const currentHabit = useSelector((state: HabitStateValue) => state.habits.currentChosenHabit)
+    const {getCurrentChosenHabit} = useHabitsState()
+    const currentHabit = getCurrentChosenHabit()
+
+    const isEditing = type === 'edit';
+
     const name = useRef<HTMLInputElement>(null);
     const description = useRef<HTMLTextAreaElement>(null);
 
     const { update } = useHabitUpdate(type);
     const { formErrors, setFormErrors, validateHabitInputs } = useHabitValidation();
 
-    const initiaNameValue = type === 'edit' ? currentHabit?.name : null
-    const initiaDescriptionValue = type === 'edit' ? currentHabit?.description : null
+    const initiaNameValue = isEditing ? currentHabit?.name : null
+    const initiaDescriptionValue = isEditing ? currentHabit?.description : null
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
@@ -32,11 +36,12 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
 
             setFormErrors([]);
 
-            if (name.current) {
+            
+            if (name.current && !isEditing) {
                 name.current.value = ''
             }
 
-            if (description.current) {
+            if (description.current && !isEditing) {
                 description.current.value = ''
             }
         }

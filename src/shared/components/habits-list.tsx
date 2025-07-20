@@ -1,12 +1,11 @@
-import { useSelector } from 'react-redux'
-
-import type { HabitStateValue } from '@/store/habit-slice'
 import SingleHabitCard from './single-habit-card';
+import useHabitsState from '../hooks/useHabitsState';
 
 type Props = {}
 
 export default function HabitsList({ }: Props) {
-  const habits = useSelector((state: HabitStateValue) => state.habits.habits);
+  const {getAllHabits} = useHabitsState()
+  const habits = getAllHabits();
 
   return (
     <ul>
