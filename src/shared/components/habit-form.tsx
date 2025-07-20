@@ -10,10 +10,6 @@ type Props = {
 
 export function HabitForm({ type }: Props) {
     const { description, name, formErrors, handleSubmit } = useHabitSubmittion(type);
-    
-
-
-
 
     return (
         <form onSubmit={handleSubmit} className="w-2/3 space-y-6">
@@ -26,7 +22,7 @@ export function HabitForm({ type }: Props) {
                     )
                 }
             </p>
-            <Button type="submit"> {true ? ' Submit' : 'Submitting...'}</Button>
+            <Button type="submit">Submit</Button>
         </form>
     )
 }

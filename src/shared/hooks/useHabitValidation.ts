@@ -15,8 +15,8 @@ export default function useHabitValidation() {
     const validateHabitInputs = (nameValue: NameValue, descriptionValue: DescriptionValue) => {
         const errors: InputError[] = []
 
-        const nameError = validateInputFields("Name", nameValue, 1);
-        const descriptionError = validateInputFields("Description", descriptionValue, 5);
+        const nameError = validateInputFields("Name", nameValue?.trim(), 1);
+        const descriptionError = validateInputFields("Description", descriptionValue?.trim(), 5);
 
         if (nameError) {
             errors.push(nameError)
