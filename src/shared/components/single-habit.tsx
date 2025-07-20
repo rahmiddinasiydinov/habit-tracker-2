@@ -41,7 +41,7 @@ export default function SingleHabit({ habit }: Props) {
                     {habit.name}
                     <SingleHabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type} />
                 </CardTitle>
-                <div className={`absolute right-7 -top-3 md:top-0 ${!isHabitCustom ? 'hidden' : ''}`}>
+                <div className={`absolute right-7 top-12 md:-top-3 ${!isHabitCustom ? 'hidden' : ''}`}>
                     <CircleCheck className=" w-[50px] h-[50px] text-green-500" />
                     {/* <CircleXIcon className=" w-[50px] h-[50px] text-destructive" /> */}
                 </div>
