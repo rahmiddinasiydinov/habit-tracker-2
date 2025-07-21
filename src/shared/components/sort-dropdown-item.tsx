@@ -10,12 +10,18 @@ type Props = {
 
 export default function SortDropdownItem({ option }: Props) {
     const dispatch = useDispatch();
-    const {getFilters} = useHabitsState();
+    const { getFilters } = useHabitsState();
     const isCheckBoxChecked = getFilters().includes(option)
     const [checked, setChecked] = useState(isCheckBoxChecked);
+    const [hasFirstRun, setHasFirstRun] = useState(false);
 
     useEffect(() => {
-        dispatch(habitActions.updateFilter(option))
+        if (hasFirstRun) {
+            dispatch(habitActions.updateFilter(option));
+        } else{
+            setHasFirstRun(true);
+        }
+
     }, [checked])
 
     return (
