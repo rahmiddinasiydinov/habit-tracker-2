@@ -21,7 +21,7 @@ export default function HabitsList({ }: Props) {
     });
 
     setFilteredHabits([...storeFiltered])
-  }, [filters])
+  }, [filters, habits])
 
   return (
     <ul className='mt-3 md:mt-5'>
