@@ -22,12 +22,12 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
 
         const nameValue = name.current?.value;
         const descriptionValue = description.current?.value;
-        const areValuesValid = validateHabitInputs(nameValue, descriptionValue);
+        const areValuesValid = validateHabitInputs(nameValue);
 
-        if (areValuesValid && nameValue && descriptionValue) {
+        if (areValuesValid && nameValue) {
             update({
                 name: nameValue,
-                description: descriptionValue,
+                description: descriptionValue || '',
                 id: currentHabit?.id
             })
 
