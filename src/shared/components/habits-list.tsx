@@ -2,6 +2,7 @@ import SingleHabitCard from './single-habit-card';
 import useHabitsState from '../hooks/useHabitsState';
 import { useEffect, useState } from 'react';
 import type { Habit } from '@/store/habit-slice';
+import { compareDesc } from 'date-fns';
 
 type Props = {}
 
@@ -20,6 +21,8 @@ export default function HabitsList({ }: Props) {
       storeFiltered = [...storeFiltered, ...filtered]
     });
 
+    storeFiltered.sort((habit, nexthabit) => compareDesc(habit.createdAt, nexthabit.createdAt));
+    
     setFilteredHabits([...storeFiltered])
   }, [filters, habits])
 
