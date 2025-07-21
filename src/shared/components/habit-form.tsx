@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { InputWithLabel } from "./input-with-label"
-import { useHabitSubmittion} from "../hooks/useHabitSubmittion"
+import { useHabitSubmittion } from "../hooks/useHabitSubmittion"
 import type { HabitSubmission } from "../hooks/useUpadeHabits"
+import { DialogClose } from "@radix-ui/react-dialog"
 
 type Props = {
     type: HabitSubmission
@@ -21,7 +22,10 @@ export function HabitForm({ type }: Props) {
                     )
                 }
             </p>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="mr-3">Submit</Button>
+            <DialogClose>
+                <Button type="button" variant='outline'>Close</Button>
+            </DialogClose>
         </form>
     )
 }

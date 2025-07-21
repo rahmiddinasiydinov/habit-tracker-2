@@ -76,7 +76,7 @@ const habitSlice = createSlice({
 
             let isEdited = false;
 
-            if (id && name && description) {
+            if (id && name) {
                 const currentHabitIndex = state.habits.findIndex(habit => habit.id === id);
                 const currentHabit = state.habits[currentHabitIndex];
 
@@ -86,7 +86,7 @@ const habitSlice = createSlice({
                     const updatedHabit: Habit = {
                         ...state.habits[currentHabitIndex],
                         name,
-                        description,
+                        description: description || '',
                         isNew: false
                     }
                     state.habits.splice(currentHabitIndex, 1, updatedHabit);

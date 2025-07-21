@@ -43,6 +43,7 @@ export function TrackDatesButton({ habitId }: Props) {
             <PopoverContent className="w-auto p-0">
                 <Calendar
                     mode="single"
+                    captionLayout="dropdown"
                     selected={date}
                     onSelect={setDate}
                     buttonVariant={'ghost'}
