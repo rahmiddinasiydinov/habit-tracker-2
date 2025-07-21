@@ -1,45 +1,34 @@
 "use client"
 
-import * as React from "react"
-import { type DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import SortDropdownItem from "./sort-dropdown-item"
+import type { Filter } from "@/store/habit-slice"
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
+type Props = {
+    triggerName: string,
+    options: Filter[],
+    dropdownTitle: string,
+}
 
-export function SortDropdown() {
-    const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
-    const [showActivityBar, setShowActivityBar] = React.useState<Checked>(true)
-
+export function SortDropdown({ options, dropdownTitle, triggerName }: Props) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline">Sort</Button>
+                <Button variant="outline">{triggerName}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>Habit types</DropdownMenuLabel>
+                <DropdownMenuLabel>{dropdownTitle}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-
-                <DropdownMenuCheckboxItem
-                    checked={showStatusBar}
-                    onCheckedChange={setShowStatusBar}
-                >
-                    Custom
-                </DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem
-                    checked={showActivityBar}
-                    onCheckedChange={setShowActivityBar}
-                >
-                    Predefined
-                </DropdownMenuCheckboxItem>
+                {
+                    options.map(option => <SortDropdownItem option={option} />)
+                }
             </DropdownMenuContent>
         </DropdownMenu>
     )

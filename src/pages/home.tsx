@@ -4,9 +4,9 @@ import HabitsOverview from "@/shared/components/habits-overview"
 export default function Home() {
 
     return (
-        <div>
+        <>
             <HabitsHeader />
             <HabitsOverview />
-        </div>
+        </>
     )
 }

@@ -13,9 +13,12 @@ export type Habit = {
     isNew?: boolean
 };
 
+export type Filter = 'Predefined' | 'Custom'
+
 export type HabitSliceValue = {
     habits: Habit[],
     currentChosenHabit: Habit | null
+    filter: Filter[]
 }
 
 export type HabitStateValue = {
@@ -46,9 +49,15 @@ type DeleteHabitAction = {
     payload: string
 }
 
+type updateFilter = {
+    type: string,
+    payload: Filter
+}
+
 const initialState: HabitSliceValue = {
     habits: PREDEFINED_HABITS,
-    currentChosenHabit: null
+    currentChosenHabit: null,
+    filter: ['Custom', 'Predefined']
 };
 
 const habitSlice = createSlice({
@@ -102,6 +111,16 @@ const habitSlice = createSlice({
 
         setCurrentChosenHabit(state, action: CurrentChosenHabitAction) {
             state.currentChosenHabit = action.payload
+        },
+
+        updateFilter(state, action: updateFilter) {
+            const filterName = action.payload;
+            const filterExist = state.filter.includes(filterName)
+            if (filterExist) {
+                state.filter = state.filter.filter(filterValue => filterValue !== filterName)
+            } else {
+                state.filter.push(filterName)
+            }
         }
     }
 })
