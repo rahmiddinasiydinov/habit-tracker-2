@@ -5,10 +5,13 @@ import type { HabitStateValue } from '@/store/habit-slice'
 export default function useHabitsState() {
     const getAllHabits = () => useSelector((state: HabitStateValue) => state.habits.habits);
     const getCurrentChosenHabit = () => useSelector((state: HabitStateValue) => state.habits.currentChosenHabit)
+    const getFilters = () => useSelector((state: HabitStateValue) => state.habits.filter);
+
     return (
         {
             getAllHabits,
-            getCurrentChosenHabit
+            getCurrentChosenHabit,
+            getFilters
         }
     )
 }
