@@ -22,7 +22,7 @@ export default function SingleHabitActions({ habit }: Props) {
 
     return (
         <>
-                <TrackTodayButton currentHabitId={habit.id}/>
+                <TrackTodayButton habitId={habit.id}/>
                 <EditHabitButton onEdit={handleEdit} />
                 <DeleteHabitButton onDelete={handleDelete} />
         </>

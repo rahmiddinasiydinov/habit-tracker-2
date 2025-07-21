@@ -1,7 +1,9 @@
+import PageHeading from "@/shared/components/page-heading"
+
 type Props = {}
 
 export default function SettingsPage({}: Props) {
   return (
-    <h1>Settings</h1>
+    <PageHeading>Settings</PageHeading>
   )
 }
