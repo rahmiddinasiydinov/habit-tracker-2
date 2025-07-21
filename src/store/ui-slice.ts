@@ -1,21 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export type UiSliceValue = {
-    theme: string,
-    isSidebarOpen: boolean
+    theme: 'dark' | 'light',
+
 }
 
 export type UiStateValue = {
     ui: UiSliceValue,
 }
 
-const deviceInnerWidth = window.innerWidth;
-const MIN_LARGE_DEVICE_LENGTH = 1024
-
 const initialState: UiSliceValue = {
     theme: 'light',
-    isSidebarOpen: deviceInnerWidth > MIN_LARGE_DEVICE_LENGTH
 }
 
 const uiSlice = createSlice({

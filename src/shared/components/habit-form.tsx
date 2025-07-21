@@ -3,7 +3,6 @@ import { InputWithLabel } from "./input-with-label"
 import { useHabitSubmittion} from "../hooks/useHabitSubmittion"
 import type { HabitSubmission } from "../hooks/useUpadeHabits"
 
-
 type Props = {
     type: HabitSubmission
 }

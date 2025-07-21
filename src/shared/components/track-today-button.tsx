@@ -1,7 +1,8 @@
+import { useState } from 'react';
+
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import { useState } from 'react';
 import useProgressState from '../hooks/useProgressState';
 import type { Habit } from '@/store/habit-slice';
 
@@ -23,7 +24,6 @@ export default function TrackTodayButton({ habitId }: Props) {
 
     const buttonClasses = isChecked ? 'bg-green-500 hover:bg-green-600' : '';
     const checkboxClasses = 'data-[state=checked]:bg-green-500 data-[state=checked]:border-green-500';
-
 
     return (<Button variant={isChecked ? 'default' : 'outline'} className={`${buttonClasses} w-22`} onClick={handleClick} >
         <Checkbox id="track" className={`${checkboxClasses}`} checked={isChecked} />

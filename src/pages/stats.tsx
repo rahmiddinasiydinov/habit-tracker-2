@@ -1,8 +1,6 @@
 import PageHeading from "@/shared/components/page-heading"
 
-type Props = {}
-
-export default function StatsPage({}: Props) {
+export default function StatsPage() {
   return (
     <PageHeading>Stats</PageHeading>
   )

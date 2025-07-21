@@ -18,7 +18,6 @@ type Props = {
 }
 
 export default function DialogWrapper({children, buttonText, buttonVariant,  title, isOpen}: Props) {
-    
     return (
         <Dialog modal={isOpen}>
             <DialogTrigger asChild>

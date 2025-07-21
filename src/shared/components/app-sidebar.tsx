@@ -12,7 +12,6 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-// Menu items.
 const items = [
     {
         title: "Home",
@@ -41,7 +40,6 @@ export function AppSidebar() {
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
-
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {items.map((item) => (

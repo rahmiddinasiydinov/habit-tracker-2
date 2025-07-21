@@ -15,6 +15,7 @@ export default function HabitBadges({ isHabitCustom, habitType, isNew }: Props) 
                 <Badge variant={'outline'} className={`text-amber-400`}>edited</Badge>
         }
     }
+    
     return (
         <span className='flex gap-3 mt-2 xl:mt-0 xl:ml-3 justify-start grow-1'>
             <Badge variant={isHabitCustom ? "default" : "secondary"} className="ml-0">{habitType}</Badge>

@@ -1,6 +1,6 @@
+import { Button } from '@/components/ui/button'
 import DialogWrapper from './dialog-wrapper'
 import { DialogClose } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
 
 type Props = {
     onDelete: () => void
@@ -18,13 +18,11 @@ export default function DeleteHabitButton({ onDelete }: Props) {
                     Cancel
                 </Button>
             </DialogClose>
-
             <DialogClose>
                 <Button variant={'outline'} onClick={onDelete}>
                     Yes
                 </Button>
             </DialogClose>
-
         </DialogWrapper>
     )
 }

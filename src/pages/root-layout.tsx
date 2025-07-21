@@ -1,10 +1,10 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/shared/components/app-sidebar";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
 
-export default function Rootlayout({ }) {
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/shared/components/app-sidebar";
 
+export default function Rootlayout({ }) {
     return (
         <SidebarProvider>
             <AppSidebar />

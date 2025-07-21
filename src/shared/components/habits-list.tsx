@@ -14,7 +14,6 @@ export default function HabitsList({ }: Props) {
           <SingleHabitCard habit={habit} />
         </li>
       })}
-
     </ul>
   )
 }

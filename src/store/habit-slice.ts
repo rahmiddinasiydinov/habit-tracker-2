@@ -1,5 +1,6 @@
-import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
 import { createSlice } from "@reduxjs/toolkit";
+
+import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
 import { toast } from "sonner";
 
 export type Habit = {
@@ -72,8 +73,6 @@ const habitSlice = createSlice({
 
                 isEdited = name !== currentHabit.name || description !== currentHabit.description;
 
-                
-
                 if (isEdited) {
                     const updatedHabit: Habit = {
                         ...state.habits[currentHabitIndex],
@@ -86,7 +85,6 @@ const habitSlice = createSlice({
                 } else {
                     toast.warning("You have not updated the habit!");
                 }
-
             }
 
             state.currentChosenHabit = null;
