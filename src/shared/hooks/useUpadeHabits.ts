@@ -4,8 +4,6 @@ import { generateNewId } from '../utils/idGenerator';
 
 export type HabitSubmission = 'add' | 'edit'
 
-
-
 export default function useHabitUpdate(type: HabitSubmission) {
   const dispatch = useDispatch();
 
@@ -29,7 +27,6 @@ export default function useHabitUpdate(type: HabitSubmission) {
       name,
       description
     }))
-
   }
 
   const update = ({ name, description, id }: { name: string, description: string, id?: string }) => {

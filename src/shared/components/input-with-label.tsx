@@ -1,8 +1,8 @@
+import type { Ref } from "react"
+
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import type { Ref } from "react"
-
 
 type Props = {
   id: string,
@@ -19,7 +19,6 @@ export function InputWithLabel({ id, placeholder, label, textarea, ref, ...props
       {textarea
         ? <Textarea ref={ref as Ref<HTMLTextAreaElement>} id={id} placeholder={placeholder} {...props} />
         : <Input ref={ref as Ref<HTMLInputElement>} type={id} id={id} placeholder={placeholder} {...props} />}
-
     </div>
   )
 }

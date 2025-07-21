@@ -16,7 +16,6 @@ export default function useProgressState() {
         return progressesForOneHabit;
     }
 
-
     const getTrackForOneDay = (habitId: string, date: string) => {
         const habitTracks = getTracksForOneHabit(habitId);
 

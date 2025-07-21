@@ -1,8 +1,9 @@
+import { useDispatch } from 'react-redux'
+
+import { habitActions, type Habit } from '@/store/habit-slice'
 import TrackTodayButton from './track-today-button'
 import EditHabitButton from './edit-habit-button'
 import DeleteHabitButton from './delete-habit-button'
-import { useDispatch } from 'react-redux'
-import { habitActions, type Habit } from '@/store/habit-slice'
 
 type Props = {
     habit: Habit
@@ -10,7 +11,6 @@ type Props = {
 
 export default function SingleHabitActions({ habit }: Props) {
     const dispatch = useDispatch();
-
 
     const handleEdit = () => {
         dispatch(habitActions.setCurrentChosenHabit(habit))

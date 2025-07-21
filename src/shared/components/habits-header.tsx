@@ -2,7 +2,6 @@ import AddHabit from './add-habit'
 import PageHeading from './page-heading'
 import { SortDropdown } from './sort-dropdown'
 
-
 type Props = {}
 
 export default function HabitsHeader({ }: Props) {

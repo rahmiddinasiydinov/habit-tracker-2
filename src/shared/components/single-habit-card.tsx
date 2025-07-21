@@ -23,6 +23,7 @@ type Props = {
 
 export default function SingleHabitCard({ habit }: Props) {
     const isHabitCustom = habit.type === 'custom';
+    
     const { getTrackForOneDay } = useProgressState();
 
     const today = new Date().toDateString();
@@ -45,7 +46,6 @@ export default function SingleHabitCard({ habit }: Props) {
                             : <CircleXIcon className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] text-destructive" />
                     }
                 </div>
-
             </CardHeader>
             <CardContent>
                 <p className="w-[90%]  max-h-[50px]">

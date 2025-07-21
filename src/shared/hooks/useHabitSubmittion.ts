@@ -5,17 +5,15 @@ import useHabitUpdate, { type HabitSubmission } from './useUpadeHabits';
 import useHabitsState from './useHabitsState';
 
 export const useHabitSubmittion = (type: HabitSubmission) => {
-    const {getCurrentChosenHabit} = useHabitsState()
-    const currentHabit = getCurrentChosenHabit()
-
-    const isEditing = type === 'edit';
-
     const name = useRef<HTMLInputElement>(null);
     const description = useRef<HTMLTextAreaElement>(null);
-
+    
     const { update } = useHabitUpdate(type);
     const { formErrors, setFormErrors, validateHabitInputs } = useHabitValidation();
-
+    const {getCurrentChosenHabit} = useHabitsState()
+    
+    const currentHabit = getCurrentChosenHabit()
+    const isEditing = type === 'edit';
     const initiaNameValue = isEditing ? currentHabit?.name : null
     const initiaDescriptionValue = isEditing ? currentHabit?.description : null
 
@@ -24,7 +22,6 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
 
         const nameValue = name.current?.value;
         const descriptionValue = description.current?.value;
-
         const areValuesValid = validateHabitInputs(nameValue, descriptionValue);
 
         if (areValuesValid && nameValue && descriptionValue) {
@@ -35,7 +32,6 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
             })
 
             setFormErrors([]);
-
             
             if (name.current && !isEditing) {
                 name.current.value = ''

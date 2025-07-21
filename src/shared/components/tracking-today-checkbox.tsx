@@ -1,11 +1,7 @@
 import { Checkbox } from '@/components/ui/checkbox'
 
-type Props = {}
-
-export default function TrackingTodayCheckbox({}: Props) {
+export default function TrackingTodayCheckbox() {
   return (
-    <>
-    <Checkbox/>
-    </>
+    <Checkbox />
   )
 }
