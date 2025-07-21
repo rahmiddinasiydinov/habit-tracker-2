@@ -7,7 +7,7 @@ type Props = {
 
 export default function EditHabitButton({ onEdit }: Props) {
     return (
-        <Button onClick={onEdit} className='mr-4 cursor-pointer'>
+        <Button onClick={onEdit} className='cursor-pointer'>
             <ManipulatedHabitForm
                 type='edit'
                 triggerName='Edit'

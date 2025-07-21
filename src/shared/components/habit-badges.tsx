@@ -10,17 +10,17 @@ export default function HabitBadges({ isHabitCustom, habitType, isNew }: Props) 
     const renderUpdateBadges = () => {
         if (isHabitCustom) {
             return isNew
-                ? <Badge variant={'outline'} className={`ml-1 md:ml-3 text-red-600`}>new</Badge>
+                ? <Badge variant={'outline'} className={`text-red-600`}>new</Badge>
                 :
-                <Badge variant={'outline'} className={`ml-1 md:ml-3 text-amber-400`}>edited</Badge>
+                <Badge variant={'outline'} className={`text-amber-400`}>edited</Badge>
         }
     }
     return (
-        <>
-            <Badge variant={isHabitCustom ? "default" : "secondary"} className="ml-2 md:ml-5">{habitType}</Badge>
+        <span className='flex gap-3 mt-2 xl:mt-0 xl:ml-3 justify-start grow-1'>
+            <Badge variant={isHabitCustom ? "default" : "secondary"} className="ml-0">{habitType}</Badge>
             {
-                renderUpdateBadges()
+             renderUpdateBadges()
             }
-        </>
+        </span>
     )
 }

@@ -5,7 +5,7 @@ export const PREDEFINED_HABITS: Habit[] = [
     id: '1',
     name: 'Morning Exercise',
     description: 'Do 15 minutes of stretching and cardio.',
-    type: 'predefined',
+    type: 'custom',
     createdAt: '2025-07-02T10:00:00.000+08:00',
     updatedAt: '',
   },

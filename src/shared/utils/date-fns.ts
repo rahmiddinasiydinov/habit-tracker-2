@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 
 export default function dateFormatter(date: string) {
 
-    return format(date, 'do MMM, yyyy');
+    return format(date, 'PPP');
 }
 
 export const getAreDatesEquel = (date1: string, date2: string) => {
@@ -10,7 +10,6 @@ export const getAreDatesEquel = (date1: string, date2: string) => {
     const formattedDate2 = dateFormatter(date2)
 
     const areDatesEquel = formattedDate1 === formattedDate2;
-    console.log(areDatesEquel);
 
     return areDatesEquel;
 }

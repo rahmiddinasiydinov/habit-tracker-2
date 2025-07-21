@@ -1,9 +1,6 @@
 import type { InputError } from "../hooks/useHabitValidation";
 
-;
-
 export const validateInputFields = (identifier: string, value: string | undefined, minLength: number): InputError => {
-    
     if (value === undefined || value.length < minLength) {
         return {
             identifier,
@@ -12,5 +9,3 @@ export const validateInputFields = (identifier: string, value: string | undefine
     }
     return null;
 }
-
-

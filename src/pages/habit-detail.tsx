@@ -1,8 +1,9 @@
+import PageHeading from "@/shared/components/page-heading"
 
 type Props = {}
 
 export default function HabitDetailPage({}: Props) {
   return (
-    <h1>Hapit-detail</h1>
+    <PageHeading>Hapit-detail</PageHeading>
   )
 }
