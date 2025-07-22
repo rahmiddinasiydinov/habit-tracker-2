@@ -17,7 +17,8 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
 
   const customHabits = getHabitsByType('custom');
 
-  const performance = completedHabits.length / customHabits.length * 100;
+  let performance = completedHabits.length / customHabits.length * 100;
+  performance = isNaN(performance) ? 0.0 : performance;
 
   const getPerformance = () => {
     if (performance > 85) return "😊"

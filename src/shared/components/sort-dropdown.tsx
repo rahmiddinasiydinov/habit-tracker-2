@@ -27,7 +27,7 @@ export function SortDropdown({ options, dropdownTitle, triggerName }: Props) {
                 <DropdownMenuLabel>{dropdownTitle}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {
-                    options.map(option => <SortDropdownItem option={option} />)
+                    options.map(option => <SortDropdownItem key={option} option={option} />)
                 }
             </DropdownMenuContent>
         </DropdownMenu>
