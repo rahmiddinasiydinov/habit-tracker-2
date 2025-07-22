@@ -30,7 +30,6 @@ export default function FormFieldWrapper({ form, id, label, placeholder, textare
                         { }
                     </FormControl>
                     <FormDescription>
-                        {/* {<p className="text-destructive">Error happened</p>} */}
                     </FormDescription>
                     <FormMessage />
                 </FormItem>

@@ -16,7 +16,7 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
   const completedHabits = getCompletedHabits(dayToDisplay);
 
   const customHabits = getHabitsByType('custom');
-  console.log(customHabits, completedHabits);
+
   const performance = completedHabits.length / customHabits.length * 100;
 
   const getPerformance = () => {
