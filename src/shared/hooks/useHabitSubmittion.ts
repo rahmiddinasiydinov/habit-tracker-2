@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FormEvent } from 'react'
+import { useCallback, useEffect, useRef, type FormEvent } from 'react'
 
 import useHabitValidation from './useHabitValidation';
 import useHabitUpdate, { type HabitSubmission } from './useUpadeHabits';
@@ -17,7 +17,7 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
     const initiaNameValue = isEditing ? currentHabit?.name : null
     const initiaDescriptionValue = isEditing ? currentHabit?.description : null
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = useCallback((e: FormEvent) => {
         e.preventDefault()
 
         const nameValue = name.current?.value;
@@ -41,7 +41,7 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
                 description.current.value = ''
             }
         }
-    }
+    }, [name, description, validateHabitInputs, setFormErrors, update])
 
     useEffect(() => {
         if (name.current) {

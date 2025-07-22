@@ -14,7 +14,7 @@ import {
 
 type Props = {
     date?: Date,
-    setDate: Dispatch<SetStateAction<Date|undefined>>
+    setDate: Dispatch<SetStateAction<Date | undefined>>
 }
 
 
