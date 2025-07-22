@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -24,6 +24,15 @@ export default function TrackTodayButton({ habitId }: Props) {
 
     const buttonClasses = isChecked ? 'bg-green-500 hover:bg-green-600' : '';
     const checkboxClasses = 'data-[state=checked]:bg-green-500 data-[state=checked]:border-green-500';
+
+    useEffect(() => {
+        
+        if (todaysTrack) {
+            setIsChecked(true)
+        } else {
+            setIsChecked(false)
+        }
+    }, [todaysTrack])
 
     return (<Button variant={isChecked ? 'default' : 'outline'} className={`${buttonClasses} w-22`} onClick={handleClick} >
         <Checkbox id="track" className={`${checkboxClasses}`} checked={isChecked} />

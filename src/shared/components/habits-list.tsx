@@ -27,7 +27,7 @@ export default function HabitsList({ }: Props) {
   }, [filters, habits])
 
   return (
-    <ul className='mt-3 md:mt-5'>
+    <ul className='mt-3 md:mt-6 overflow-auto h-[95%] pr-3'>
       {filteredHabits.map(habit => {
         return <li key={habit.id} className='mb-2 md:mb-4 last:mb-0'>
           <SingleHabitCard habit={habit} />
