@@ -24,7 +24,7 @@ const HabitsList = memo(function HabitsList() {
   }, [filters, habits])
 
   return (
-    <ul className='mt-10 md:mt-6 overflow-auto h-[95%] pr-3'>
+    <ul className='mt-10 md:mt-6 overflow-auto h-[96%] pr-0 md:pr-3'>
       {filteredHabits.map(habit => {
         return <li key={habit.id} className='mb-2 md:mb-4 last:mb-0'>
           <SingleHabitCard habit={habit} />

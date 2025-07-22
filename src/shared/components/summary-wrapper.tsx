@@ -30,7 +30,7 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
   const sticker = getPerformance()
 
   return (
-    <div className='p-2 bg-secondary md:p-8 shadow-md h-[50%]'>
+    <div className='p-2 bg-secondary md:p-8 shadow-md h-[50%] rounded-lg'>
       <div className="flex items-center gap-3">
         <h3 className='text-lg md:text-xl font-bold'>{title}</h3>
         {

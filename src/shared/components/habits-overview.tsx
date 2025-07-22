@@ -21,14 +21,14 @@ export default function HabitsOverview() {
     const summaryClasses = activeTab === 'summary' ? 'flex' : 'hidden';
 
     return (
-        <section className="flex gap-2 md:gap-4 flex-col lg:flex-row mt-3 md:mt-10 pb-4">
+        <section className="flex gap-2 md:gap-4 flex-col lg:flex-row mt-3 md:mt-10 pb-4 max-h-[750px]">
             <MobileTabs activeTab={activeTab} handleHabitButtonCLick={handleHabitButtonCLick} handleSummaryButtonCLick={handleSummaryButtonCLick} />
 
-            <div className={`relative lg:w-[50%] p-2 md:p-4 md:pt-8 md:pr-0 bg-secondary shadow-md md:max-h-[800px] overflow-auto rounded-xl md:block ${habitsClasses}`}>
+            <div className={`relative lg:w-[50%] p-2 md:p-4 md:pt-10 md:pr-0 bg-secondary shadow-md md:max-h-[750px] overflow-auto rounded-lg md:block ${habitsClasses}`}>
                 <HabitsListActions />
                 <HabitsList />
             </div>
-            <div className={`lg:w-[50%] md:max-h-[800px]  flex-col gap-4 md:flex ${summaryClasses}`}>
+            <div className={`lg:w-[50%] md:max-h-[750px]  flex-col gap-4 md:flex ${summaryClasses}`}>
                 <HomeSummary />
             </div>
         </section>
