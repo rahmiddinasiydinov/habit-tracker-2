@@ -1,4 +1,4 @@
-import type { Habit } from "@/features/habits/slice";
+import type { Habit } from "@/features/habits/types";
 
 export const PREDEFINED_HABITS: Habit[] = [
   {
