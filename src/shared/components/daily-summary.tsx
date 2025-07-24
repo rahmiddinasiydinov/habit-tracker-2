@@ -1,4 +1,4 @@
-import SummaryWrapper from './summary-wrapper'
+import SummaryWrapper from '../ui/summary-wrapper'
 
 type Props = {}
 
