@@ -1,5 +1,5 @@
-import HabitsHeader from "@/shared/components/habits-header"
-import HabitsOverview from "@/shared/components/habits-overview"
+import HabitsHeader from "@/features/habits/components/habits-header"
+import HabitsOverview from "@/features/habits/components/habits-overview"
 
 export default function Home() {
 

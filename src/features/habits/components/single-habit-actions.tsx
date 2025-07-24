@@ -1,11 +1,12 @@
+import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { habitActions, type Habit } from '@/store/habit-slice'
+import { habitActions } from '@/features/habits/slice'
+import { progressActions } from '@/features/progress/slice'
 import TrackTodayButton from './track-today-button'
 import EditHabitButton from './edit-habit-button'
 import DeleteHabitButton from './delete-habit-button'
-import { progressActions } from '@/store/progress-slice'
-import { useCallback } from 'react'
+import type { Habit } from '../types'
 
 type Props = {
     habit: Habit

@@ -1,8 +1,9 @@
-import SingleHabitCard from './single-habit-card';
-import useHabitsState from '../hooks/useHabitsState';
 import { memo, useEffect, useState } from 'react';
-import type { Habit } from '@/store/habit-slice';
 import { compareDesc } from 'date-fns';
+
+import SingleHabitCard from './single-habit-card';
+import useHabitsState from '../../../shared/hooks/useHabitsState';
+import type { Habit } from '../types';
 
 const HabitsList = memo(function HabitsList() {
   const [filteredHabits, setFilteredHabits] = useState<Habit[]>([])

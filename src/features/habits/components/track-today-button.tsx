@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import useProgressState from '../hooks/useProgressState';
-import type { Habit } from '@/store/habit-slice';
+import useProgressState from '../../../shared/hooks/useProgressState';
+import type { Habit } from '../types';
 
 type Props = {
     habitId: Habit['id']

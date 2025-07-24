@@ -1,4 +1,4 @@
-import ManipulatedHabitForm from './manipulated-habit-form'
+import ManipulatedHabitForm from "./manipulated-habit-form";
 
 export default function AddHabit() {
     return (

@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import type { MobileTabs } from './habits-overview'
+import type { MobileTabs } from '../../features/habits/components/habits-overview'
 
 type Props = {
     activeTab: MobileTabs,

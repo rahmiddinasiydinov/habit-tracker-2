@@ -10,12 +10,13 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-import { type Habit } from '@/store/habit-slice'
-import dateFormatter from "../utils/date-fns"
+import dateFormatter from "../../../shared/utils/date-fns"
 import HabitBadges from "./habit-badges"
 import SingleHabitActions from "./single-habit-actions"
-import useProgressState from "../hooks/useProgressState"
-import { TrackDatesButton } from "./track-dates-button"
+import useProgressState from "../../../shared/hooks/useProgressState"
+import { TrackDatesButton } from "../../../shared/components/track-dates-button"
+import type { Habit } from "../types"
+import { Link } from "react-router-dom"
 
 type Props = {
     habit: Habit
@@ -33,7 +34,7 @@ export default function SingleHabitCard({ habit }: Props) {
         <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>
             <CardHeader className="relative">
                 <CardTitle className="md:text-2xl flex flex-col xl:flex-row xl:items-center">
-                    {habit.name}
+                    <Link to={`/habit/${habit.id}`}>{habit.name}</Link>
                     <HabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type} />
                 </CardTitle>
                 <CardDescription>

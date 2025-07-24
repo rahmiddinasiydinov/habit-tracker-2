@@ -1,58 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
 import { toast } from "sonner";
+import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
+import type { AddHabitAction, CurrentChosenHabitAction, DeleteHabitAction, EditHabitAction, Habit, HabitSliceValue, updateFilter } from "./types";
 
-export type Habit = {
-    id: string;
-    name: string;
-    description: string;
-    type: 'predefined' | 'custom';
-    createdAt: string;  // ISO 8601
-    updatedAt?: string;  // ISO 8601
-    isNew?: boolean
-};
-
-export type Filter = 'Predefined' | 'Custom'
-
-export type HabitSliceValue = {
-    habits: Habit[],
-    currentChosenHabit: Habit | null
-    filter: Filter[]
-}
-
-export type HabitStateValue = {
-    habits: HabitSliceValue
-}
-
-type AddHabitAction = {
-    type: string,
-    payload: Habit
-}
-
-type EditHabitAction = {
-    type: string,
-    payload: {
-        id: string,
-        name?: string,
-        description?: string
-    }
-}
-
-type CurrentChosenHabitAction = {
-    type: string,
-    payload: Habit
-}
-
-type DeleteHabitAction = {
-    type: string,
-    payload: string
-}
-
-type updateFilter = {
-    type: string,
-    payload: Filter
-}
 
 const initialState: HabitSliceValue = {
     habits: PREDEFINED_HABITS,
