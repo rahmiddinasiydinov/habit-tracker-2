@@ -8,7 +8,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import SortDropdownItem from "./sort-dropdown-item"
+import SortDropdownItem from "../components/sort-dropdown-item"
 import type { Filter } from "@/features/habits/types"
 
 type Props = {

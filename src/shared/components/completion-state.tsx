@@ -1,6 +1,6 @@
-import SummaryWrapper from './summary-wrapper'
+import SummaryWrapper from '../ui/summary-wrapper'
 import { useState } from 'react'
-import PopoverCalendar from './popover-calendar'
+import PopoverCalendar from '../ui/popover-calendar'
 
 export default function CompletionState() {
     const [date, setDate] = useState<Date | undefined>(new Date())

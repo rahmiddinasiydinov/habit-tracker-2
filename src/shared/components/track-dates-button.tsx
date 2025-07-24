@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 
 import useProgressState from "../hooks/useProgressState"
-import PopoverCalendar from "./popover-calendar"
+import PopoverCalendar from "../ui/popover-calendar"
 import type { Habit } from "@/features/habits/types"
 
 type Props = {

@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/shared/components/app-sidebar";
+import { AppSidebar } from "@/shared/ui/app-sidebar";
 
 export default function Rootlayout({ }) {
     return (

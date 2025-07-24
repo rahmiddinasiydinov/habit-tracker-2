@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { DialogClose } from "@/components/ui/dialog"
 
-import { InputWithLabel } from "../../../shared/components/input-with-label"
+import { InputWithLabel } from "../../../shared/ui/input-with-label"
 import { useHabitSubmittion } from "../../../shared/hooks/useHabitSubmittion"
 import type { HabitSubmission } from "../../../shared/hooks/useUpadeHabits"
 
