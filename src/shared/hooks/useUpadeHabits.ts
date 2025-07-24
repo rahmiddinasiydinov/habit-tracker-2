@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { habitActions, type Habit } from '@/store/habit-slice';
-import { generateNewId } from '../utils/idGenerator';
+import { habitActions } from '@/features/habits/slice';
+import { generateNewId } from '../utils/id-generator';
+import type { Habit } from '@/features/habits/types';
 
 export type HabitSubmission = 'add' | 'edit'
 

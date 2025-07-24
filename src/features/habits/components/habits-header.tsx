@@ -1,5 +1,5 @@
 import AddHabit from './add-habit'
-import PageHeading from './page-heading'
+import PageHeading from '../../../shared/components/page-heading'
 
 type Props = {}
 

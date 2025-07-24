@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
-import DialogWrapper from './dialog-wrapper'
 import { DialogClose } from '@/components/ui/dialog'
+
+import DialogWrapper from '../../../shared/components/dialog-wrapper'
 
 type Props = {
     onDelete: () => void

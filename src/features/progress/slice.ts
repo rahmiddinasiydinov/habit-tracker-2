@@ -1,29 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { Habit } from "./habit-slice";
-
-export type SingleProgressValue = {
-    id: string
-    habitId: Habit['id'],
-    trackedDay: string
-}
-
-type ProgressSliceValue = {
-    progress: SingleProgressValue[]
-}
-
-export type ProgressStateValue = {
-    progress: ProgressSliceValue;
-}
-
-type AddActionType = {
-    type: string,
-    payload: SingleProgressValue
-}
-
-type RemoveActionType = {
-    type: string,
-    payload: SingleProgressValue['id']
-}
+import type { AddActionType, ProgressSliceValue, RemoveActionType, SingleProgressValue } from "./types";
 
 const initialState: ProgressSliceValue = {
     progress: []

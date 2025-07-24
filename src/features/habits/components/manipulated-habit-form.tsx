@@ -1,5 +1,5 @@
-import type { HabitSubmission } from '../hooks/useUpadeHabits'
-import DialogWrapper from './dialog-wrapper'
+import DialogWrapper from '@/shared/components/dialog-wrapper'
+import type { HabitSubmission } from '@/shared/hooks/useUpadeHabits'
 import { HabitForm } from './habit-form'
 
 type Props = {

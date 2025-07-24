@@ -1,9 +1,11 @@
-import { progressActions, type ProgressStateValue, type SingleProgressValue } from "@/store/progress-slice"
 import { useDispatch, useSelector } from "react-redux"
-import dateFormatter, { getAreDatesEquel } from "../utils/date-fns";
-import type { Habit } from "@/store/habit-slice";
-import { generateNewId } from "../utils/idGenerator";
 import { toast } from "sonner";
+
+import dateFormatter, { getAreDatesEquel } from "../utils/date-fns";
+import { generateNewId } from "../utils/id-generator";
+import type { ProgressStateValue, SingleProgressValue } from "@/features/progress/types";
+import type { Habit } from "@/features/habits/types";
+import { progressActions } from "@/features/progress/slice";
 
 export default function useProgressState() {
     const dispatch = useDispatch();

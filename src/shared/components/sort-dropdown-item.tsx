@@ -1,8 +1,9 @@
 import { DropdownMenuCheckboxItem } from '@/components/ui/dropdown-menu'
 import { useEffect, useState } from 'react'
 import useHabitsState from '../hooks/useHabitsState';
-import { habitActions, type Filter } from '@/store/habit-slice';
+import { habitActions } from '@/features/habits/slice';
 import { useDispatch } from 'react-redux';
+import type { Filter } from '@/features/habits/types';
 
 type Props = {
     option: Filter,
@@ -29,7 +30,7 @@ export default function SortDropdownItem({ option }: Props) {
             checked={checked}
             onCheckedChange={setChecked}
         >
-            {option.toUpperCase()}
+            {option}
         </DropdownMenuCheckboxItem>
     )
 }

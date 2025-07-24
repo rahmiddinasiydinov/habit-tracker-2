@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react'
+
 import HabitsList from './habits-list'
 import HabitsListActions from './habits-list-actions'
-import HomeSummary from './home-summary'
-import MobileTabs from './mobile-tabs';
+import HomeSummary from '../../../shared/components/home-summary'
+import MobileTabs from '../../../shared/components/mobile-tabs';
 
 export type MobileTabs = 'habits' | 'summary'
 

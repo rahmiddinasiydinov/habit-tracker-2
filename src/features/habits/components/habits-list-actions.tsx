@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { SortDropdown } from "./sort-dropdown"
+import { SortDropdown } from "../../../shared/components/sort-dropdown"
 
 const HabitsListActions = memo(function HabitsListActions() {
 

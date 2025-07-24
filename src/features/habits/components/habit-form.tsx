@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
-import { InputWithLabel } from "./input-with-label"
-import { useHabitSubmittion } from "../hooks/useHabitSubmittion"
-import type { HabitSubmission } from "../hooks/useUpadeHabits"
-import { DialogClose } from "@radix-ui/react-dialog"
+import { DialogClose } from "@/components/ui/dialog"
+
+import { InputWithLabel } from "../../../shared/components/input-with-label"
+import { useHabitSubmittion } from "../../../shared/hooks/useHabitSubmittion"
+import type { HabitSubmission } from "../../../shared/hooks/useUpadeHabits"
 
 type Props = {
     type: HabitSubmission

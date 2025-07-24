@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react"
 
 import useProgressState from "../hooks/useProgressState"
-import type { Habit } from "@/store/habit-slice"
 import PopoverCalendar from "./popover-calendar"
+import type { Habit } from "@/features/habits/types"
 
 type Props = {
     habitId: Habit['id']

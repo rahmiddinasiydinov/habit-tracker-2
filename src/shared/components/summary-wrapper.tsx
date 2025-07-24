@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import CompletedHabitBadges from "./completed-habit-badges"
+import CompletedHabitBadges from "../../features/habits/components/completed-habit-badges"
 import useHabitSummary from "../hooks/useHabitSummary";
 import useHabitsState from "../hooks/useHabitsState";
 

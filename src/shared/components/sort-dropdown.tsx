@@ -9,7 +9,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import SortDropdownItem from "./sort-dropdown-item"
-import type { Filter } from "@/store/habit-slice"
+import type { Filter } from "@/features/habits/types"
 
 type Props = {
     triggerName: string,

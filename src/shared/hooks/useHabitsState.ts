@@ -1,6 +1,5 @@
+import type { Habit, HabitStateValue } from '@/features/habits/types';
 import { useSelector } from 'react-redux'
-
-import type { HabitStateValue } from '@/store/habit-slice'
 
 export default function useHabitsState() {
     const getAllHabits = () => useSelector((state: HabitStateValue) => state.habits.habits);
@@ -11,12 +10,19 @@ export default function useHabitsState() {
         return getAllHabits().filter(habit => habit.type === type);
     }
 
+    const getHabitById = (id: Habit['id']) => {
+        const habits = getAllHabits();
+        const foundHabit = habits.find(habit => habit.id === id);
+        return foundHabit
+    }
+
     return (
         {
             getAllHabits,
             getCurrentChosenHabit,
             getFilters,
-            getHabitsByType
+            getHabitsByType,
+            getHabitById
         }
     )
 }
