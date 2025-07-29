@@ -1,4 +1,4 @@
-import { CircleCheck, CircleXIcon } from "lucide-react"
+import { CircleCheck } from "lucide-react"
 
 import {
     Card,
@@ -25,7 +25,7 @@ type Props = {
 
 export default function SingleHabitCard({ habit }: Props) {
     const isHabitCustom = habit.type === 'custom';
-    
+
 
     const today = new Date().toDateString();
     const todaysTrack = useSelector((state) => selectProgressForOneHabitForOneDay(state, habit.id, today));
@@ -44,7 +44,7 @@ export default function SingleHabitCard({ habit }: Props) {
                     {
                         todaysTrack
                             ? <CircleCheck className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] text-green-500" />
-                            : <CircleXIcon className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] text-destructive" />
+                            : null
                     }
                 </div>
             </CardHeader>
@@ -56,7 +56,7 @@ export default function SingleHabitCard({ habit }: Props) {
             <CardFooter className="flex gap-3 flex-col sm:flex-row sm:justify-between  items-start flex-wrap">
                 {
                     isHabitCustom && <>
-                        <TrackDatesButton habitId={habit.id}/>
+                        <TrackDatesButton habitId={habit.id} />
                         <CardAction className="flex items-center flex-wrap gap-2 lg:gap-3">
                             <SingleHabitActions habit={habit} />
                         </CardAction>

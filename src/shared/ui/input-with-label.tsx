@@ -14,7 +14,7 @@ type Props = {
 
 export function InputWithLabel({ id, placeholder, label, textarea, ref, ...props }: Props) {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
+    <div className="grid w-full items-center gap-3">
       <Label htmlFor={id}>{label}</Label>
       {textarea
         ? <Textarea ref={ref as Ref<HTMLTextAreaElement>} id={id} placeholder={placeholder} {...props} />

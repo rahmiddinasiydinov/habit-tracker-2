@@ -13,7 +13,7 @@ export function HabitForm({ type }: Props) {
     const { description, name, formErrors, handleSubmit } = useHabitSubmittion(type);
 
     return (
-        <form onSubmit={handleSubmit} className="w-2/3 space-y-6">
+        <form onSubmit={handleSubmit} className="w-full space-y-6">
             <InputWithLabel ref={name} id="name" label="Name" placeholder="Enter habit name" />
             <InputWithLabel ref={description} id="description" label="Description" placeholder="Enter habit description" textarea />
             <p className="text-destructive">
