@@ -1,8 +1,9 @@
+import { lazy } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+
 import App from '@/App';
 import ErrorPage from '@/pages/error';
 import Home from '@/pages/home';
-import { lazy } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
 
 const StatsPage = lazy(() => import('@/pages/stats'));
 const HabitDetailPage = lazy(() => import('@/pages/habit-detail'));
