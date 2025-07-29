@@ -15,9 +15,9 @@ import HabitBadges from "./habit-badges"
 import SingleHabitActions from "./single-habit-actions"
 import { TrackDatesButton } from "../../../shared/components/track-dates-button"
 import type { Habit } from "../types"
-import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectProgressForOneHabitForOneDay } from "@/features/progress/utils"
+import { Link } from "react-router-dom"
 
 type Props = {
     habit: Habit
@@ -34,7 +34,7 @@ export default function SingleHabitCard({ habit }: Props) {
         <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>
             <CardHeader className="relative">
                 <CardTitle className="md:text-2xl flex flex-col xl:flex-row xl:items-center">
-                    <Link to={`/habit/${habit.id}`}>{habit.name}</Link>
+                    {habit.name}
                     <HabitBadges isHabitCustom={isHabitCustom} isNew={habit.isNew} habitType={habit.type} />
                 </CardTitle>
                 <CardDescription>
@@ -52,16 +52,21 @@ export default function SingleHabitCard({ habit }: Props) {
                 <p className="w-[90%]  max-h-[50px]">
                     {habit.description.slice(0, 50)}{habit.description.length > 50 ? "..." : ''}
                 </p>
+
             </CardContent>
-            <CardFooter className="flex gap-3 flex-col sm:flex-row sm:justify-between  items-start flex-wrap">
+            <CardFooter className="relative flex gap-3 flex-col sm:flex-row sm:justify-between  items-start flex-wrap">
                 {
                     isHabitCustom && <>
-                        <TrackDatesButton habitId={habit.id} />
+                        <div>
+                            <TrackDatesButton habitId={habit.id} />
+                            <Link to={'/habit/' + habit.id} className="ml-2 text-blue-600">Details...</Link>
+                        </div>
                         <CardAction className="flex items-center flex-wrap gap-2 lg:gap-3">
                             <SingleHabitActions habit={habit} />
                         </CardAction>
                     </>
                 }
+
             </CardFooter>
         </Card>
     )
