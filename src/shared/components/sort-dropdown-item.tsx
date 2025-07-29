@@ -1,9 +1,9 @@
 import { DropdownMenuCheckboxItem } from '@/components/ui/dropdown-menu'
 import { useEffect, useState } from 'react'
-import useHabitsState from '../hooks/useHabitsState';
 import { habitActions } from '@/features/habits/slice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { Filter } from '@/features/habits/types';
+import { selectFilter } from '@/features/habits/utils';
 
 type Props = {
     option: Filter,
@@ -11,8 +11,8 @@ type Props = {
 
 export default function SortDropdownItem({ option }: Props) {
     const dispatch = useDispatch();
-    const { getFilters } = useHabitsState();
-    const isCheckBoxChecked = getFilters().includes(option)
+    const filter = useSelector(selectFilter);
+    const isCheckBoxChecked = filter.includes(option)
     const [checked, setChecked] = useState(isCheckBoxChecked);
     const [hasFirstRun, setHasFirstRun] = useState(false);
 
@@ -23,8 +23,8 @@ export default function SortDropdownItem({ option }: Props) {
             setHasFirstRun(true);
         }
 
-    }, [checked])
-
+         //eslint-disable-next-line
+    }, [checked, dispatch, option])
     return (
         <DropdownMenuCheckboxItem
             checked={checked}

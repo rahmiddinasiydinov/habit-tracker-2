@@ -17,12 +17,12 @@ export default function SingleHabitActions({ habit }: Props) {
 
     const handleEdit = useCallback(() => {
         dispatch(habitActions.setCurrentChosenHabit(habit))
-    }, [habitActions, dispatch])
+    }, [dispatch, habit])
 
     const handleDelete = useCallback(() => {
         dispatch(habitActions.deleteHabit(habit.id));
         dispatch(progressActions.removeHabitTrackings(habit.id));
-    }, [habitActions, progressActions, dispatch])
+    }, [dispatch, habit])
 
     return (
         <>

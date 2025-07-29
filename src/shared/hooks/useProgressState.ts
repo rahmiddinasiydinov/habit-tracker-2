@@ -3,31 +3,20 @@ import { toast } from "sonner";
 
 import dateFormatter, { getAreDatesEquel } from "../utils/date-fns";
 import { generateNewId } from "../utils/id-generator";
-import type { ProgressStateValue, SingleProgressValue } from "@/features/progress/types";
+import type { ProgressStateValue } from "@/features/progress/types";
 import type { Habit } from "@/features/habits/types";
 import { progressActions } from "@/features/progress/slice";
+import { selectProgressForOneHabitForOneDay } from "@/features/progress/utils";
 
-export default function useProgressState() {
+export default function useProgressState(
+    habitId: Habit['id'],
+    date?: Date,
+) {
+
     const dispatch = useDispatch();
-    const getAllTracks = () => useSelector((state: ProgressStateValue) => state.progress.progress);
-    const allProgresses = getAllTracks();
 
-    const getTracksForOneHabit = (habitId: string) => {
-        const progressesForOneHabit = allProgresses.filter((progress: SingleProgressValue) => progress.habitId === habitId);
-
-        return progressesForOneHabit;
-    }
-
-    const getTrackForOneDay = (habitId: string, date: string) => {
-        const habitTracks = getTracksForOneHabit(habitId);
-
-        const trackForToday = habitTracks.find((track: SingleProgressValue) => {
-            const areDatesEquel = getAreDatesEquel(date, track.trackedDay);
-            return areDatesEquel
-        });
-
-        return trackForToday;
-    }
+    const ISOdate = date?.toISOString();
+    const progressForOneHabitForOndeDay = useSelector((state: ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOdate));
 
     const toastDispatchedTrack = (date: string, action: 'add' | 'remove') => {
         const areDatesEquel = getAreDatesEquel(date, new Date().toISOString());
@@ -53,10 +42,9 @@ export default function useProgressState() {
         tickForToday?: (status: boolean) => void
     ) => {
         const ISOdate = date.toISOString();
-        const progressTrack: SingleProgressValue | undefined = getTrackForOneDay(habitId, ISOdate);
 
-        if (progressTrack) {
-            dispatch(progressActions.removeTracking(progressTrack.id))
+        if (progressForOneHabitForOndeDay) {
+            dispatch(progressActions.removeTracking(progressForOneHabitForOndeDay.id))
             if (tickForToday) {
                 tickForToday(false)
             }
@@ -77,9 +65,6 @@ export default function useProgressState() {
     }
 
     return ({
-        getAllTracks,
-        getTracksForOneHabit,
-        getTrackForOneDay,
         dispatchProgressTrack
     }
     )

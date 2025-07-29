@@ -1,18 +1,16 @@
-import type { Habit } from "@/features/habits/types";
+import type { Habit, HabitStateValue } from "@/features/habits/types";
+import { selectHabitsById } from "@/features/habits/utils";
 import PageHeading from "@/shared/components/page-heading"
-import useHabitsState from "@/shared/hooks/useHabitsState";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 
 export default function HabitDetailPage() {
   const params = useParams()
-  const { getHabitById } = useHabitsState();
 
   const id = params.id;
   let habit: Habit | undefined = undefined;
 
-  if (id) {
-    habit = getHabitById(id);
-  }
+  habit = useSelector((state:HabitStateValue) => selectHabitsById(state, id))
 
   let content = <p>We are sorry, we could not find habit</p>
 

@@ -2,27 +2,26 @@ import { memo, useEffect, useState } from 'react';
 import { compareDesc } from 'date-fns';
 
 import SingleHabitCard from './single-habit-card';
-import useHabitsState from '../../../shared/hooks/useHabitsState';
 import type { Habit } from '../types';
+import { useSelector } from 'react-redux';
+import { selectAllHabits, selectFilter } from '../utils';
 
 const HabitsList = memo(function HabitsList() {
   const [filteredHabits, setFilteredHabits] = useState<Habit[]>([])
-  const { getAllHabits, getFilters } = useHabitsState();
-
-  const filters = getFilters();
-  const habits = getAllHabits();
+  const habits = useSelector(selectAllHabits);
+  const filter = useSelector(selectFilter)
 
   useEffect(() => {
     let storeFiltered: Habit[] = [];
-    filters.forEach(filterValue => {
-      let filtered = habits.filter(habit => habit.type === filterValue.toLocaleLowerCase());
+    filter.forEach(filterValue => {
+      const filtered = habits.filter(habit => habit.type === filterValue.toLocaleLowerCase());
       storeFiltered = [...storeFiltered, ...filtered]
     });
 
     storeFiltered.sort((habit, nexthabit) => compareDesc(habit.createdAt, nexthabit.createdAt));
 
     setFilteredHabits([...storeFiltered])
-  }, [filters, habits])
+  }, [filter, habits])
 
   return (
     <ul className='mt-10 md:mt-6 overflow-auto h-[96%] pr-0 md:pr-3'>

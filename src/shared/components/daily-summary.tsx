@@ -1,8 +1,6 @@
 import SummaryWrapper from '../ui/summary-wrapper'
 
-type Props = {}
-
-export default function DailySummary({ }: Props) {
+export default function DailySummary() {
     return (
         <SummaryWrapper title={'Daily summary'} />
     )

@@ -5,18 +5,21 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import useProgressState from '../../../shared/hooks/useProgressState';
 import type { Habit } from '../types';
+import { useSelector } from 'react-redux';
+import type { ProgressStateValue } from '@/features/progress/types';
+import { selectProgressForOneHabitForOneDay } from '@/features/progress/utils';
 
 type Props = {
     habitId: Habit['id']
 }
 
 export default function TrackTodayButton({ habitId }: Props) {
-    const { getTrackForOneDay, dispatchProgressTrack } = useProgressState();
-
     const today = new Date();
+    const {  dispatchProgressTrack } = useProgressState( habitId, today);
+
     const ISOtoday = today.toISOString()
-    const todaysTrack = getTrackForOneDay(habitId, ISOtoday);
-    const [isChecked, setIsChecked] = useState(Boolean(todaysTrack) || false);
+    const todaysProgress = useSelector((state:ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOtoday));
+    const [isChecked, setIsChecked] = useState(Boolean(todaysProgress) || false);
 
     const handleClick = () => {
         dispatchProgressTrack(habitId, today, setIsChecked);
@@ -27,12 +30,12 @@ export default function TrackTodayButton({ habitId }: Props) {
 
     useEffect(() => {
         
-        if (todaysTrack) {
+        if (todaysProgress) {
             setIsChecked(true)
         } else {
             setIsChecked(false)
         }
-    }, [todaysTrack])
+    }, [todaysProgress])
 
     return (<Button variant={isChecked ? 'default' : 'outline'} className={`${buttonClasses} w-22`} onClick={handleClick} >
         <Checkbox id="track" className={`${checkboxClasses}`} checked={isChecked} />
