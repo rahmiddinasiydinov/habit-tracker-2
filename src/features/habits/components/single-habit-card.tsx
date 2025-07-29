@@ -13,10 +13,11 @@ import {
 import dateFormatter from "../../../shared/utils/date-fns"
 import HabitBadges from "./habit-badges"
 import SingleHabitActions from "./single-habit-actions"
-import useProgressState from "../../../shared/hooks/useProgressState"
 import { TrackDatesButton } from "../../../shared/components/track-dates-button"
 import type { Habit } from "../types"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { selectProgressForOneHabitForOneDay } from "@/features/progress/utils"
 
 type Props = {
     habit: Habit
@@ -25,10 +26,9 @@ type Props = {
 export default function SingleHabitCard({ habit }: Props) {
     const isHabitCustom = habit.type === 'custom';
     
-    const { getTrackForOneDay } = useProgressState();
 
     const today = new Date().toDateString();
-    const todaysTrack = getTrackForOneDay(habit.id, today);
+    const todaysTrack = useSelector((state) => selectProgressForOneHabitForOneDay(state, habit.id, today));
 
     return (
         <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>

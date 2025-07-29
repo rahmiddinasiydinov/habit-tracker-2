@@ -62,7 +62,7 @@ export function ThemeProvider({
     </ThemeProviderContext.Provider>
   )
 }
-
+//eslint-disable-next-line
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
 
