@@ -20,7 +20,7 @@ export default function DeleteHabitButton({ onDelete }: Props) {
                 </Button>
             </DialogClose>
             <DialogClose>
-                <Button variant={'outline'} onClick={onDelete}>
+                <Button variant={'destructive'} onClick={onDelete}>
                     Yes
                 </Button>
             </DialogClose>
