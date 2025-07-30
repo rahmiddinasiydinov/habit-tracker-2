@@ -1,32 +1,21 @@
-import { Button } from "@/components/ui/button"
-import { DialogClose } from "@/components/ui/dialog"
-
-import { InputWithLabel } from "../../../shared/ui/input-with-label"
-import { useHabitSubmittion } from "../../../shared/hooks/useHabitSubmittion"
-import type { HabitSubmission } from "../../../shared/hooks/useUpadeHabits"
+import DialogWrapper from '@/shared/ui/dialog-wrapper'
+import type { HabitSubmission } from '@/shared/hooks/useUpadeHabits'
+import { Form } from './form'
 
 type Props = {
-    type: HabitSubmission
+    type: HabitSubmission,
+    triggerName: string,
+    dialogTitle: string
 }
 
-export function HabitForm({ type }: Props) {
-    const { description, name, formErrors, handleSubmit } = useHabitSubmittion(type);
-
+export default function HabitForm({ type, triggerName, dialogTitle }: Props) {
     return (
-        <form onSubmit={handleSubmit} className="w-full space-y-6">
-            <InputWithLabel ref={name} id="name" label="Name" placeholder="Enter habit name" />
-            <InputWithLabel ref={description} id="description" label="Description" placeholder="Enter habit description" textarea />
-            <p className="text-destructive">
-                {formErrors.length > 0 &&
-                    formErrors?.map(error =>
-                        <li key={error?.identifier}>{error?.message}</li>
-                    )
-                }
-            </p>
-            <Button type="submit" className="mr-3">Submit</Button>
-            <DialogClose>
-                <Button type="button" variant='outline'>Close</Button>
-            </DialogClose>
-        </form>
+        <DialogWrapper
+            buttonVariant={'default'}
+            buttonText={triggerName}
+            title={dialogTitle}
+        >
+            <Form type={type} />
+        </DialogWrapper>
     )
 }
