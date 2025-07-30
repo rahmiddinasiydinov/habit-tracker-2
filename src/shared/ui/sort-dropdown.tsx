@@ -9,11 +9,11 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import SortDropdownItem from "../components/sort-dropdown-item"
-import type { Filter } from "@/features/habits/types"
+import type { HabitStatus } from "@/features/habits/types"
 
 type Props = {
     triggerName: string,
-    options: Filter[],
+    options: HabitStatus[],
     dropdownTitle: string,
 }
 

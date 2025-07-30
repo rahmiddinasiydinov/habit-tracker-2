@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge'
 
 type Props = {
     isHabitCustom: boolean,
-    habitType: 'custom' | 'predefined',
+    habitType: 'custom' | 'predefined' | 'active-predefined',
     isNew: boolean | undefined
 }
 

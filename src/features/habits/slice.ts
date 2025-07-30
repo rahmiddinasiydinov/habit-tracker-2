@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { toast } from "sonner";
 import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
-import type { AddHabitAction, CurrentChosenHabitAction, DeleteHabitAction, EditHabitAction, Habit, HabitSliceValue, updateFilter } from "./types";
+import type { AddHabitAction, CurrentChosenHabitAction, DeleteHabitAction, EditHabitAction, Habit, HabitSliceValue, updateFilter, updatePredefinedType } from "./types";
 
 
 const initialState: HabitSliceValue = {
     habits: PREDEFINED_HABITS,
     currentChosenHabit: null,
-    filter: ['Custom', 'Predefined']
+    filter: ['custom', 'predefined', "active-predefined"]
 };
 
 const habitSlice = createSlice({
@@ -72,6 +72,15 @@ const habitSlice = createSlice({
             } else {
                 state.filter.push(filterName)
             }
+        },
+
+        updatePredefinedType(state, action: updatePredefinedType) {
+            const currentHabitIndex = state.habits.findIndex(habit => habit.id === action.payload.habitId);
+            state.habits[currentHabitIndex].type = action.payload.type
+            if (!state.habits[currentHabitIndex].isAddedToTrack) {
+                state.habits[currentHabitIndex].isAddedToTrack = true
+            }
+
         }
     }
 })

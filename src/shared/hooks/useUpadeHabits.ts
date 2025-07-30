@@ -16,7 +16,7 @@ export default function useHabitUpdate(type: HabitSubmission) {
       description,
       createdAt: date.toISOString(),
       type: 'custom',
-      isNew: true
+      isNew: true,
     }
 
     dispatch(habitActions.addHabit(newHabit));
