@@ -5,7 +5,7 @@ const HabitsListActions = memo(function HabitsListActions() {
 
   return (
     <div className="absolute left-2 top-2">
-      <SortDropdown options={['Custom', 'Predefined']} triggerName="Type" dropdownTitle="Choose the type" />
+      <SortDropdown options={['custom', 'predefined', 'active-predefined']} triggerName="Type" dropdownTitle="Choose the type" />
     </div>
   )
 })
