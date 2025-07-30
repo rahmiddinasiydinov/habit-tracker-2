@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { DialogClose } from "@/components/ui/dialog"
 
 import { InputWithLabel } from "../../../shared/ui/input-with-label"
-import { useHabitSubmittion } from "../../../shared/hooks/useHabitSubmittion"
+import { useHabitSubmission } from "../../../shared/hooks/useHabitSubmission.ts"
 import type { HabitSubmission } from "../../../shared/hooks/useUpadeHabits"
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export function Form({ type }: Props) {
-    const { description, name, formErrors, handleSubmit } = useHabitSubmittion(type);
+    const { description, name, formErrors, handleSubmit } = useHabitSubmission(type);
 
     return (
         <form onSubmit={handleSubmit} className="w-full space-y-6">

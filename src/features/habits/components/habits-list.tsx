@@ -18,7 +18,7 @@ const HabitsList = memo(function HabitsList() {
       storeFiltered = [...storeFiltered, ...filtered]
     });
 
-    storeFiltered.sort((habit, nexthabit) => compareDesc(habit.createdAt, nexthabit.createdAt));
+    storeFiltered.sort((habit, nextHabit) => compareDesc(habit.createdAt, nextHabit.createdAt));
 
     setFilteredHabits([...storeFiltered])
   }, [filter, habits])

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "sonner";
 
-import dateFormatter, { getAreDatesEquel } from "../utils/date-fns";
+import dateFormatter, { getAreDatesEqual } from "../utils/date-fns";
 import { generateNewId } from "../utils/id-generator";
 import type { ProgressStateValue } from "@/features/progress/types";
 import type { Habit } from "@/features/habits/types";
@@ -15,20 +15,20 @@ export default function useProgressState(
 
     const dispatch = useDispatch();
 
-    const ISOdate = date?.toISOString();
-    const progressForOneHabitForOndeDay = useSelector((state: ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOdate));
+    const isoDateString = date?.toISOString();
+    const progressForOneHabitForOneDay = useSelector((state: ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, isoDateString));
 
     const toastDispatchedTrack = (date: string, action: 'add' | 'remove') => {
-        const areDatesEquel = getAreDatesEquel(date, new Date().toISOString());
+        const areDatesEqual = getAreDatesEqual(date, new Date().toISOString());
         if (action === 'add') {
-            if (areDatesEquel) {
+            if (areDatesEqual) {
                 toast.success(`Habit is tracked for today`)
             } else {
                 toast.success(`Habit is tracked for date: ${dateFormatter(date)}`)
 
             }
         } else {
-            if (areDatesEquel) {
+            if (areDatesEqual) {
                 toast.info(`Habit is untracked for today`)
             } else {
                 toast.info(`Habit is untracked for date: ${dateFormatter(date)}`)
@@ -43,8 +43,8 @@ export default function useProgressState(
     ) => {
         const ISOdate = date.toISOString();
 
-        if (progressForOneHabitForOndeDay) {
-            dispatch(progressActions.removeTracking(progressForOneHabitForOndeDay.id))
+        if (progressForOneHabitForOneDay) {
+            dispatch(progressActions.removeTracking(progressForOneHabitForOneDay.id))
             if (tickForToday) {
                 tickForToday(false)
             }

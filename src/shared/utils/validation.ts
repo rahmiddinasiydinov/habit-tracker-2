@@ -4,7 +4,7 @@ export const validateInputFields = (identifier: string, value: string | undefine
     if (value === undefined || value.length < minLength) {
         return {
             identifier,
-            message: identifier + " should have at least " + minLength + " charachers."
+            message: identifier + " should have at least " + minLength + " characters."
         }
     }
     
