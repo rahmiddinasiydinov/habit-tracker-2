@@ -2,11 +2,11 @@ import { DropdownMenuCheckboxItem } from '@/components/ui/dropdown-menu'
 import { useEffect, useState } from 'react'
 import { habitActions } from '@/features/habits/slice';
 import { useDispatch, useSelector } from 'react-redux';
-import type { Filter } from '@/features/habits/types';
+import type { HabitStatus } from '@/features/habits/types';
 import { selectFilter } from '@/features/habits/utils';
 
 type Props = {
-    option: Filter,
+    option: HabitStatus,
 }
 
 export default function SortDropdownItem({ option }: Props) {

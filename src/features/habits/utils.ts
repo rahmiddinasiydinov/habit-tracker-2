@@ -5,13 +5,11 @@ export const selectAllHabits = (state: HabitStateValue) => state.habits.habits
 export const selectCurrentChosenHabit = (state: HabitStateValue) => state.habits.currentChosenHabit
 export const selectFilter = (state: HabitStateValue) => state.habits.filter
 
-export const selectHabitsByType = createSelector(
-    [selectAllHabits,
-        (_, type) => type
-    ],
-    (habits, type) => {
+export const selectAllAcrtiveHabits = createSelector(
+    [selectAllHabits],
+    (habits) => {
 
-        return habits.filter(habit => habit.type.trim() === type.trim());
+        return habits.filter(habit => habit.type.trim() === 'custom' || habit.isAddedToTrack);
     }
 )
 

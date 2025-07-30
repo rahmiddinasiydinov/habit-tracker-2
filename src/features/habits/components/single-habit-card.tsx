@@ -1,5 +1,3 @@
-import { CircleCheck } from "lucide-react"
-
 import {
     Card,
     CardAction,
@@ -15,23 +13,28 @@ import HabitBadges from "./habit-badges"
 import SingleHabitActions from "./single-habit-actions"
 import { TrackDatesButton } from "../../../shared/components/track-dates-button"
 import type { Habit } from "../types"
-import { useSelector } from "react-redux"
-import { selectProgressForOneHabitForOneDay } from "@/features/progress/utils"
+import { useDispatch } from "react-redux"
+import {  } from "@/features/progress/utils"
 import { Link } from "react-router-dom"
+import { Button } from "@/components/ui/button"
+import { habitActions } from "../slice"
 
 type Props = {
     habit: Habit
 }
 
 export default function SingleHabitCard({ habit }: Props) {
+    const dispatch = useDispatch();
     const isHabitCustom = habit.type === 'custom';
+    const areActionsButtonsEnabled = habit.type === 'custom' || habit.type === 'active-predefined'
 
+    const handleStartTracking = () => {
+        const updatedType = habit.type === "predefined" ? "active-predefined" : "predefined"
+        dispatch(habitActions.updatePredefinedType({ habitId: habit.id, type: updatedType }))
+    }
 
-    const today = new Date().toDateString();
-    const todaysTrack = useSelector((state) => selectProgressForOneHabitForOneDay(state, habit.id, today));
-
-    return (
-        <Card className={`${!isHabitCustom ? 'opacity-40 cursor-default select-none' : ''}`}>
+    return (<div className="relative">
+        <Card className={`${!areActionsButtonsEnabled ? 'opacity-40 cursor-default select-none' : ''}`}>
             <CardHeader className="relative">
                 <CardTitle className="md:text-2xl flex flex-col xl:flex-row xl:items-center">
                     {habit.name}
@@ -40,13 +43,6 @@ export default function SingleHabitCard({ habit }: Props) {
                 <CardDescription>
                     {dateFormatter(habit.createdAt)}
                 </CardDescription>
-                <div className={`absolute right-7  md:-top-3 ${!isHabitCustom ? 'hidden' : ''}`}>
-                    {
-                        todaysTrack
-                            ? <CircleCheck className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] text-green-500" />
-                            : null
-                    }
-                </div>
             </CardHeader>
             <CardContent>
                 <p className="w-[90%]  max-h-[50px]">
@@ -56,7 +52,7 @@ export default function SingleHabitCard({ habit }: Props) {
             </CardContent>
             <CardFooter className="relative flex gap-3 flex-col sm:flex-row sm:justify-between  items-start flex-wrap">
                 {
-                    isHabitCustom && <>
+                    areActionsButtonsEnabled && <>
                         <div>
                             <TrackDatesButton habitId={habit.id} />
                             <Link to={'/habit/' + habit.id} className="ml-2 text-blue-600">Details...</Link>
@@ -69,5 +65,7 @@ export default function SingleHabitCard({ habit }: Props) {
 
             </CardFooter>
         </Card>
+        {!isHabitCustom && <Button className="absolute bottom-6 right-3 sm:right-3 sm:my-auto sm:top-0 sm:bottom-0 z-10 bg-gray-600 hover:bg-gray-800 cursor-pointer transition duration-200" variant={'default'} onClick={handleStartTracking}>{habit.type === 'predefined' ? "Start tracking" : "Stop tracking"}</Button>}
+    </div>
     )
 }

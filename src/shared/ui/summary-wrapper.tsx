@@ -2,8 +2,7 @@ import type { ReactNode } from "react"
 import CompletedHabitBadges from "../../features/habits/components/completed-habit-badges"
 import useHabitSummary from "../hooks/useHabitSummary";
 import { useSelector } from "react-redux";
-import { selectHabitsByType } from "@/features/habits/utils";
-import type { HabitStateValue } from "@/features/habits/types";
+import { selectAllAcrtiveHabits } from "@/features/habits/utils";
 
 type Props = {
   title: string,
@@ -16,9 +15,9 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
   const dayToDisplay = date ?? new Date().toISOString();
   const completedHabits = getCompletedHabits(dayToDisplay);
 
-  const customHabits = useSelector((state: HabitStateValue) => selectHabitsByType(state, 'custom'));
+  const allActiveHabits = useSelector(selectAllAcrtiveHabits);
 
-  let performance = completedHabits.length / customHabits.length * 100;
+  let performance = completedHabits.length / allActiveHabits.length * 100;
   performance = isNaN(performance) ? 0.0 : performance;
 
   const getPerformance = () => {
@@ -40,7 +39,7 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
         <p className="text-lg md:text-xl font-bold">
           (<span className="">{completedHabits.length}</span>
           /
-          <span>{customHabits.length}</span>)
+          <span>{allActiveHabits.length}</span>)
         </p>
       </div>
       <p className="mt-2">Performance {performance.toFixed(1)}% {sticker}</p>

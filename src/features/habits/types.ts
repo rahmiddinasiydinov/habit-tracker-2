@@ -1,19 +1,21 @@
+export type HabitStatus = 'predefined' | 'custom' | "active-predefined"
+
 export type Habit = {
     id: string;
     name: string;
     description: string;
-    type: 'predefined' | 'custom';
+    type: HabitStatus;
     createdAt: string;  // ISO 8601
     updatedAt?: string;  // ISO 8601
-    isNew?: boolean
+    isNew?: boolean,
+    isAddedToTrack?: boolean
 };
 
-export type Filter = 'Predefined' | 'Custom'
 
 export type HabitSliceValue = {
     habits: Habit[],
     currentChosenHabit: Habit | null
-    filter: Filter[]
+    filter: HabitStatus[]
 }
 
 export type HabitStateValue = {
@@ -46,5 +48,13 @@ export type DeleteHabitAction = {
 
 export type updateFilter = {
     type: string,
-    payload: Filter
+    payload: HabitStatus
+}
+
+export type updatePredefinedType = {
+    type: string,
+    payload: {
+        habitId: Habit["id"],
+        type: HabitStatus
+    }
 }
