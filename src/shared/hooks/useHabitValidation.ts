@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { validateInputFields } from '../utils/validation';
+import {useState} from 'react'
+import {validateInputFields} from '../utils/validation';
 
 type NameValue = string | undefined
 
@@ -21,9 +21,7 @@ export default function useHabitValidation() {
         }
 
         setFormErrors(errors)
-        const AreValuesValid = errors.length === 0;
-
-        return AreValuesValid;
+        return errors.length === 0;
     }
 
 

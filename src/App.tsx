@@ -1,5 +1,5 @@
 import { Provider } from "react-redux"
-import Rootlayout from "./pages/root-layout"
+import RootLayout from "./pages/root-layout"
 import store from "./store"
 import { ThemeProvider } from "./shared/theme/provider"
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <Provider store={store}>
         <ThemeProvider>
-          <Rootlayout />
+          <RootLayout />
         </ThemeProvider>
       </Provider>
     </>

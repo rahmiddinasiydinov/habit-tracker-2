@@ -1,7 +1,7 @@
-import { createSelector } from "@reduxjs/toolkit";
-import type { ProgressStateValue, SingleProgressValue } from "./types";
-import type { Habit } from "../habits/types";
-import { getAreDatesEquel } from "@/shared/utils/date-fns";
+import {createSelector} from "@reduxjs/toolkit";
+import type {ProgressStateValue, SingleProgressValue} from "./types";
+import type {Habit} from "../habits/types";
+import {getAreDatesEqual} from "@/shared/utils/date-fns";
 
 export const selectAllProgress = (state: ProgressStateValue) => state.progress.progress;
 
@@ -27,8 +27,7 @@ export const selectProgressForOneHabitForOneDay = createSelector(
         if (!date) return null
 
         return oneHabitProgress.find((track: SingleProgressValue) => {
-            const areDatesEquel = getAreDatesEquel(date, track.trackedDay);
-            return areDatesEquel
+            return getAreDatesEqual(date, track.trackedDay)
         });
     }
 )

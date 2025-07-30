@@ -5,7 +5,7 @@ import useHabitUpdate, { type HabitSubmission } from './useUpadeHabits';
 import { useSelector } from 'react-redux';
 import { selectCurrentChosenHabit } from '@/features/habits/utils';
 
-export const useHabitSubmittion = (type: HabitSubmission) => {
+export const useHabitSubmission = (type: HabitSubmission) => {
     const name = useRef<HTMLInputElement>(null);
     const description = useRef<HTMLTextAreaElement>(null);
     
@@ -16,8 +16,8 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
 
 
     const isEditing = type === 'edit';
-    const initiaNameValue = isEditing ? currentHabit?.name : null
-    const initiaDescriptionValue = isEditing ? currentHabit?.description : null
+    const initialNameValue = isEditing ? currentHabit?.name : null
+    const initialDescriptionValue = isEditing ? currentHabit?.description : null
 
     const handleSubmit = useCallback((e: FormEvent) => {
         e.preventDefault()
@@ -47,13 +47,13 @@ export const useHabitSubmittion = (type: HabitSubmission) => {
 
     useEffect(() => {
         if (name.current) {
-            name.current.value = initiaNameValue || ''
+            name.current.value = initialNameValue || ''
         }
 
         if (description.current) {
-            description.current.value = initiaDescriptionValue || ''
+            description.current.value = initialDescriptionValue || ''
         }
-    }, [initiaDescriptionValue, initiaNameValue])
+    }, [initialDescriptionValue, initialNameValue])
 
     return ({
         description,

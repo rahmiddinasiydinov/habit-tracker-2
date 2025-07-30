@@ -17,9 +17,9 @@ export default function TrackTodayButton({ habitId }: Props) {
     const today = new Date();
     const {  dispatchProgressTrack } = useProgressState( habitId, today);
 
-    const ISOtoday = today.toISOString()
-    const todaysProgress = useSelector((state:ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOtoday));
-    const [isChecked, setIsChecked] = useState(Boolean(todaysProgress) || false);
+    const ISOToday = today.toISOString()
+    const todayProgress = useSelector((state:ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOToday));
+    const [isChecked, setIsChecked] = useState(Boolean(todayProgress) || false);
 
     const handleClick = () => {
         dispatchProgressTrack(habitId, today, setIsChecked);
@@ -30,12 +30,12 @@ export default function TrackTodayButton({ habitId }: Props) {
 
     useEffect(() => {
         
-        if (todaysProgress) {
+        if (todayProgress) {
             setIsChecked(true)
         } else {
             setIsChecked(false)
         }
-    }, [todaysProgress])
+    }, [todayProgress])
 
     return (<Button variant={isChecked ? 'default' : 'outline'} className={`${buttonClasses} w-22`} onClick={handleClick} >
         <Checkbox id="track" className={`${checkboxClasses}`} checked={isChecked} />

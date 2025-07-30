@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/shared/ui/app-sidebar";
 
-export default function Rootlayout() {
+export default function RootLayout() {
     return (
         <SidebarProvider>
             <AppSidebar />
