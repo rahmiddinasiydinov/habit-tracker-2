@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import ManipulatedHabitForm from './manipulated-habit-form'
+import HabitForm from './habit-form'
 
 type Props = {
     onEdit: () => void
@@ -8,7 +8,7 @@ type Props = {
 export default function EditHabitButton({ onEdit }: Props) {
     return (
         <Button onClick={onEdit} className='cursor-pointer px-0'>
-            <ManipulatedHabitForm
+            <HabitForm
                 type='edit'
                 triggerName='Edit'
                 dialogTitle='Edit the habit:'
