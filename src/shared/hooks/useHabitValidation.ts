@@ -24,7 +24,6 @@ export default function useHabitValidation() {
         return errors.length === 0;
     }
 
-
     return (
         {
             formErrors,

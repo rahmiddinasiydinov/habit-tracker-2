@@ -2,7 +2,7 @@ import type { ReactNode } from "react"
 import CompletedHabitBadges from "../../features/habits/components/completed-habit-badges"
 import useHabitSummary from "../hooks/useHabitSummary";
 import { useSelector } from "react-redux";
-import { selectAllAcrtiveHabits } from "@/features/habits/utils";
+import { selectAllActiveHabits } from "@/features/habits/utils";
 
 type Props = {
   title: string,
@@ -15,7 +15,7 @@ export default function SummaryWrapper({ title, calendar, date }: Props) {
   const dayToDisplay = date ?? new Date().toISOString();
   const completedHabits = getCompletedHabits(dayToDisplay);
 
-  const allActiveHabits = useSelector(selectAllAcrtiveHabits);
+  const allActiveHabits = useSelector(selectAllActiveHabits);
 
   let performance = completedHabits.length / allActiveHabits.length * 100;
   performance = isNaN(performance) ? 0.0 : performance;

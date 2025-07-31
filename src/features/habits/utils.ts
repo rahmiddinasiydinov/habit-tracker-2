@@ -5,7 +5,7 @@ export const selectAllHabits = (state: HabitStateValue) => state.habits.habits
 export const selectCurrentChosenHabit = (state: HabitStateValue) => state.habits.currentChosenHabit
 export const selectFilter = (state: HabitStateValue) => state.habits.filter
 
-export const selectAllAcrtiveHabits = createSelector(
+export const selectAllActiveHabits = createSelector(
     [selectAllHabits],
     (habits) => {
 
@@ -24,4 +24,3 @@ export const selectHabitsById = createSelector(
         return habits.find(habit => habit.id === id)
     }
 )
-
