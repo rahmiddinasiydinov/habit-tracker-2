@@ -1,12 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit";
-import habitReducer from '../features/habits/slice';
-import progressReducer from '../features/progress/slice';
+import { rootPersistReducer } from "./root-reducer";
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
-const store  = configureStore({
-    reducer:{
-        habits: habitReducer,
-        progress: progressReducer
-    }
+export const store = configureStore({
+  reducer: rootPersistReducer, 
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 })
 
-export default store;
+export const persistor = persistStore(store)
