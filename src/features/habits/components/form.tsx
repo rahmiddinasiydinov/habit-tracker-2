@@ -3,14 +3,15 @@ import { DialogClose } from "@/components/ui/dialog"
 
 import { InputWithLabel } from "../../../shared/ui/input-with-label"
 import { useHabitSubmission } from "../../../shared/hooks/useHabitSubmission.ts"
-import type { HabitSubmission } from "../../../shared/hooks/useUpadeHabits"
+import type { HabitSubmission } from "../../../shared/hooks/useUpdateHabits.ts"
 
 type Props = {
-    type: HabitSubmission
+    type: HabitSubmission,
+    handleModalClose: () => void
 }
 
-export function Form({ type }: Props) {
-    const { description, name, formErrors, handleSubmit } = useHabitSubmission(type);
+export function Form({ type, handleModalClose }: Props) {
+    const { description, name, formErrors, handleSubmit } = useHabitSubmission(type, handleModalClose);
 
     return (
         <form onSubmit={handleSubmit} className="w-full space-y-6">
@@ -24,7 +25,7 @@ export function Form({ type }: Props) {
                 }
             </p>
             <Button type="submit" className="mr-3">Submit</Button>
-            <DialogClose>
+            <DialogClose asChild>
                 <Button type="button" variant='outline'>Close</Button>
             </DialogClose>
         </form>

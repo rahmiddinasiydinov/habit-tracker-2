@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useRef, type FormEvent } from 'react'
 
 import useHabitValidation from './useHabitValidation';
-import useHabitUpdate, { type HabitSubmission } from './useUpadeHabits';
+import useHabitUpdate, { type HabitSubmission } from './useUpdateHabits';
 import { useSelector } from 'react-redux';
 import { selectCurrentChosenHabit } from '@/features/habits/utils';
 
-export const useHabitSubmission = (type: HabitSubmission) => {
+export const useHabitSubmission = (type: HabitSubmission, handleModalClose: () => void) => {
     const name = useRef<HTMLInputElement>(null);
     const description = useRef<HTMLTextAreaElement>(null);
-    
+
     const currentHabit = useSelector(selectCurrentChosenHabit)
 
     const { update } = useHabitUpdate(type);
@@ -34,6 +34,7 @@ export const useHabitSubmission = (type: HabitSubmission) => {
             })
 
             setFormErrors([]);
+            handleModalClose()
 
             if (name.current && !isEditing) {
                 name.current.value = ''
@@ -43,7 +44,7 @@ export const useHabitSubmission = (type: HabitSubmission) => {
                 description.current.value = ''
             }
         }
-    }, [validateHabitInputs, update, currentHabit?.id, setFormErrors, isEditing])
+    }, [validateHabitInputs, update, currentHabit?.id, setFormErrors, handleModalClose, isEditing])
 
     useEffect(() => {
         if (name.current) {
