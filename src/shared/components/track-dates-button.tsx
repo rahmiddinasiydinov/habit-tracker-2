@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 
-import useProgressState from "../hooks/useProgressState"
+import useProgressDispatch from "../hooks/useProgressDispatch"
 import PopoverCalendar from "../ui/popover-calendar"
 import type { Habit } from "@/features/habits/types"
 
@@ -11,7 +11,7 @@ type Props = {
 
 export function TrackDatesButton({ habitId }: Props) {
     const [date, setDate] = useState<Date>()
-    const { dispatchProgressTrack } = useProgressState(habitId, date)
+    const { dispatchProgressTrack } = useProgressDispatch(habitId, date)
 
     useEffect(() => {
         if (date) {

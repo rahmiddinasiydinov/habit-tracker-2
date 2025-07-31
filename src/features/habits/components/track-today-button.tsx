@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
-import useProgressState from '../../../shared/hooks/useProgressState';
+import useProgressDispatch from '../../../shared/hooks/useProgressDispatch';
 import type { Habit } from '../types';
 import { useSelector } from 'react-redux';
 import type { ProgressStateValue } from '@/features/progress/types';
@@ -15,7 +15,7 @@ type Props = {
 
 export default function TrackTodayButton({ habitId }: Props) {
     const today = new Date();
-    const {  dispatchProgressTrack } = useProgressState( habitId, today);
+    const {  dispatchProgressTrack } = useProgressDispatch( habitId, today);
 
     const ISOToday = today.toISOString()
     const todayProgress = useSelector((state:ProgressStateValue) => selectProgressForOneHabitForOneDay(state, habitId, ISOToday));

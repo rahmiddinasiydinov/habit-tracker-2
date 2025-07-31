@@ -8,7 +8,7 @@ import type { Habit } from "@/features/habits/types";
 import { progressActions } from "@/features/progress/slice";
 import { selectProgressForOneHabitForOneDay } from "@/features/progress/utils";
 
-export default function useProgressState(
+export default function useProgressDispatch(
     habitId: Habit['id'],
     date?: Date,
 ) {
@@ -21,16 +21,11 @@ export default function useProgressState(
     const toastDispatchedTrack = (date: string, action: 'add' | 'remove') => {
         const areDatesEqual = getAreDatesEqual(date, new Date().toISOString());
         if (action === 'add') {
-            if (areDatesEqual) {
-                toast.success(`Habit is tracked for today`)
-            } else {
+            if (!areDatesEqual) {
                 toast.success(`Habit is tracked for date: ${dateFormatter(date)}`)
-
             }
         } else {
-            if (areDatesEqual) {
-                toast.info(`Habit is untracked for today`)
-            } else {
+            if (!areDatesEqual) {
                 toast.info(`Habit is untracked for date: ${dateFormatter(date)}`)
             }
         }

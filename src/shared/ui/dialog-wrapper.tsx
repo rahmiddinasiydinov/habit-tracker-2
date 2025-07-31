@@ -7,19 +7,21 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
 type Props = {
     children: React.ReactNode,
     buttonText: string,
     title: string
     buttonVariant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined,
-    isOpen?: boolean
+    isOpen?: boolean,
+    isDialogOpen?: boolean,
+    setIsModalOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function DialogWrapper({children, buttonText, buttonVariant,  title, isOpen}: Props) {
+export default function DialogWrapper({ children, buttonText, buttonVariant, title, isOpen, isDialogOpen, setIsModalOpen }: Props) {
     return (
-        <Dialog modal={isOpen}>
+        <Dialog modal={isOpen} open={isDialogOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
                 <Button variant={buttonVariant}>{buttonText}</Button>
             </DialogTrigger>
