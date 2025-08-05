@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 import { toast } from "sonner";
 import { PREDEFINED_HABITS } from "@/shared/constants/predefined-habits";
 import type { AddHabitAction, CurrentChosenHabitAction, DeleteHabitAction, EditHabitAction, Habit, HabitSliceValue, updateFilter, updatePredefinedType } from "./types";
@@ -86,4 +87,4 @@ const habitSlice = createSlice({
 })
 
 export const habitActions = habitSlice.actions;
-export default habitSlice.reducer;
+export default habitSlice;

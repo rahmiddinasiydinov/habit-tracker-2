@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+        <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider>
             <RootLayout />
           </ThemeProvider>
